@@ -61,12 +61,7 @@
             "filename": "../../security-firewall/security-firewall.md"
         },
         {
-            "title": "Lab 11: Performance - MySQL Thread Pooling",
-            "description": "Performance - MySQL Thread Pooling",
-            "filename": "../../performance-tp/performance-tp.md"
-        },
-        {
-            "title": "Lab 12: Addemdum",
+            "title": "Lab 11: Addemdum",
             "description": "Addemdum",
             "filename": "../../addendum/addendum.md"
         },

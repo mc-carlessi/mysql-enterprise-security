@@ -134,14 +134,14 @@ This lab assumes you have:
 
     **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
     ```
-    <copy>sudo wget https://objectstorage.us-ashburn-1.oraclecloud.com/p/ZcBNAp5fV45QBh_hTa-x5r0xtWIlBgKxfZGKoQdXVce0HKBFCUZD70DX418GSspE/n/idazzjlcjqzj/b/bucket-20240214-SecurityWorkshop03142024/o/workshop83.tar</copy>
+    <copy>sudo wget https://objectstorage.us-ashburn-1.oraclecloud.com/p/gXmOYNBcgAWQeWnYuftAXwB7Jd1Iqgr2oTuPZLl2Ekn53iwgap8r60qsK2NGq0Qz/n/idazzjlcjqzj/b/bucket-20240214-SecurityWorkshop03142024/o/Workshop84.tar</copy>
     ```
     
 4.  Extract workshop files 
 
     **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
     ```
-    <copy>sudo tar xvf workshop83.tar </copy>
+    <copy>sudo tar xvf Workshop84.tar </copy>
     ```
 
 
@@ -153,4 +153,4 @@ This lab assumes you have:
 
 ## Acknowledgements
 * **Author** - Dale Dasker, MySQL Solution Engineering
-* **Last Updated By/Date** - Dale Dasker, March 2023
+* **Last Updated By/Date** - Perside Foster, MySQL Solution Engineering, August 2024
