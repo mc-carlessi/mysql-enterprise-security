@@ -31,9 +31,9 @@
             "filename": "../../install-ee-rpm/install-ee.md"
         },
         {
-            "title": "Lab 5: Install - Verify MySQL Enterprise Edition - OPTIONAL ",
-            "description": "Install - Verify MySQL Enterprise Edition",
-            "filename": "../../install-verify-ee/install-verify-ee.md"
+            "title": "Lab 5: Verify MySQL Enterprise Edition - OPTIONAL ",
+            "description": "Verify MySQL Enterprise Edition",
+            "filename": "../../verify-ee/verify-ee.md"
         },
         {
             "title": "Lab 6: Security - MySQL Users",

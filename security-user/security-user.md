@@ -3,32 +3,33 @@
 ## Introduction
 
 Users management
-Objective: explore user creation and privileges on a Server 
-
+Objective: explore user creation and privileges on a Server
 
 *This lab walks you through creating some users which will be used to Audit.
 
 Estimated Time: 10 minutes
 
-
 ### Objectives
 
 In this lab, you will  do the followings:
+
 - Connect to mysql-enterprise
-- Create appuser 
+- Create appuser
 
 ### Prerequisites
 
 This lab assumes you have:
-* An Oracle account
-* All previous labs successfully completed
 
-* Lab standard  
+- All previous labs successfully completed
+
+- Lab standard
+
     - ![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell> the command must be executed in the Operating System shell
     - ![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql> the command must be executed in a client like MySQL, MySQL Workbench
     - ![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh> the command must be executed in MySQL shell
-    
+
 **Notes:**
+
 - Open a notepad file and  your linux Private IP on student###-serverA 
 
 - serverA  PRIVATE ip: (client_ip)
@@ -158,14 +159,12 @@ This lab assumes you have:
     <copy>GRANT ALL PRIVILEGES ON employees.* TO 'appuser1'@'127.0.0.1';</copy>
     ```
 
-
-
-
 ## Learn More
 
-* [CREATE USER](https://dev.mysql.com/doc/refman/8.0/en/create-user.html)
-* [MySQL Access Control Lists](https://dev.mysql.com/doc/refman/8.0/en/access-control.html)
+- [CREATE USER](https://dev.mysql.com/doc/refman/8.0/en/create-user.html)
+- [MySQL Access Control Lists](https://dev.mysql.com/doc/refman/8.0/en/access-control.html)
 
 ## Acknowledgements
-* **Author** - Dale Dasker, MySQL Solution Engineering
 
+- **Author** - Dale Dasker, MySQL Solution Engineering
+- **Last Updated By/Date** - Perside Foster, MySQL Solution Engineering, August 2024

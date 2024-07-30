@@ -5,34 +5,34 @@
 Goal:
     Verify the new MySQL Installation on Linux and import test databases
 
-Objectives: 
-- understand better how MySQL connection works
-- install test databases for labs (world and employees)
-- have a look on useful statements
+Objectives:
 
+- understand better how MySQL connection works
+- have a look on useful statements
 
 Estimated Time: -- 10 minutes
 
 ### Objectives
 
 In this lab, you will:
-* Discuss MySQL Connection 
-* Connect to Port 3306
-* Import Sample Databses
-* Learn Useful SQL Statements
+
+- Discuss MySQL Connection
+- Connect to Port 3306
+- Import Sample Databses
+- Learn Useful SQL Statements
 
 ### Prerequisites
 
 This lab assumes you have:
-* An Oracle account
-* All previous labs successfully completed
 
-* Lab standard  
+- All previous labs successfully completed
+
+- Lab standard  
     - ![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell> the command must be executed in the Operating System shell
     - ![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql> the command must be executed in a client like MySQL, MySQL Workbench
     - ![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh> the command must be executed in MySQL shell
-    
-## Task 1: Discuss MySQL Connection 
+
+## Task 1: Discuss MySQL Connection
 
 Please note that now you have an instance on the server on port 3306. To connect to MySQL, always use the IP address, otherwise you may connect to wrong instance. Here we practice connecting to the right one (port 3310 is intentionally wrong). To help you understand “why” these check lines (not all are always available…)
 
@@ -41,7 +41,7 @@ Please note that now you have an instance on the server on port 3306. To connect
 - UNIX socket:
 - TCP port:
 
-## Task 2: 	Connect to Port 3306 
+## Task 2: Connect to Port 3306
 
 1.  **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
     ```
@@ -131,8 +131,9 @@ Please note that now you have an instance on the server on port 3306. To connect
 
 ## Learn More
 
-* [MySQL Tutorial](https://dev.mysql.com/doc/refman/8.0/en/tutorial.html)
+* [MySQL Tutorial](https://dev.mysql.com/doc/en/tutorial.html)
 
 ## Acknowledgements
-* **Author** - Dale Dasker, MySQL Solution Engineering
-* **Last Updated By/Date** - <Dale Dasker, February 2024
+
+- **Author** - Dale Dasker, MySQL Solution Engineering
+- **Last Updated By/Date** - Perside Foster, MySQL Solution Engineering, August 2024
