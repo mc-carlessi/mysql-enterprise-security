@@ -1,6 +1,6 @@
-# SETUP
+# SETUP Environment
 
-## Environment Setup
+## Introduction
 
 Objective: Connect Personal Computer to the Oracle Network and the Oracle Cloud Infrastructure (OCI)
 
