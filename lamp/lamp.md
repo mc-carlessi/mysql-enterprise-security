@@ -231,7 +231,7 @@ In this lab, you will be guided through the following tasks:
 
     http://computeIP/emp_apps/list_employees.php
 
-    ![MDS](./images/airport_web.png "airport-web-php")
+    ![MDS](./images/emp-list.png "emp-list-php")
 
 You may now **proceed to the next lab**
 
