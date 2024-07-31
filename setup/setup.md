@@ -144,7 +144,7 @@ This lab assumes you have:
     <copy>sudo tar xvf Workshop84.tar </copy>
     ```
 
-
+You may now **proceed to the next lab**
 
 ## Learn More
 

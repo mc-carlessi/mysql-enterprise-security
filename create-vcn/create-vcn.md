@@ -132,7 +132,7 @@ In this lab, you will be guided through the following tasks:
 
     ![VCN](./images/03vcn11.png " ")
 
-**You may now proceed to the next lab**
+You may now **proceed to the next lab**
 
 ## Acknowledgements
 

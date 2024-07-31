@@ -173,8 +173,8 @@ To connect to **myclient** you will need to properly setup your SSH command. Do 
 
     ** You are ready to install MySQL on the  Compute Instance**
 
-**You may now proceed to the next lab**
+You may now **proceed to the next lab**
 
 ## Acknowledgements
-* **Author** - Dale Dasker, MySQL Solution Engineering
-* **Last Updated By/Date** - <Dale Dasker, April 2022
+- **Author** - Dale Dasker, MySQL Solution Engineering
+- **Last Updated By/Date** - <Perside Foster, MySQL Solution Engineering, August 2024

@@ -243,6 +243,7 @@ To help you we created one with some variables, please copy it
    <copy>source /home/opc/.bash&#95;profile</copy>
     ```
 
+You may now **proceed to the next lab**
 
 ## Learn More
 

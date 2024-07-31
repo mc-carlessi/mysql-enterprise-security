@@ -21,6 +21,8 @@ In this workshop, you will learn how to work with
 - MySQL Enterprise Data Masking
 - MySQL Enterprise Firewall
 
+You may now **proceed to the next lab**
+
 ## Learn More
 
 - [MySQL Home Page](https://www.mysql.com/)

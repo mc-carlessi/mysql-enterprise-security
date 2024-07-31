@@ -197,13 +197,45 @@ In this lab, you will be guided through the following tasks:
 
     Example: http://129.213.167..../dbtest.php  
 
-## Learn More
+## TASK 4: Add Employyee Web App to server
 
-[https://dev.mysql.com/doc/heatwave/en/mys-hw-lakehouse.html](https://dev.mysql.com/doc/heatwave/en/mys-hw-lakehouse.html)
+1. Go to the development folder
+
+    ```bash
+    <copy>cd /var/www/html</copy>
+    ```
+
+2. Download application code
+
+    ```bash
+    <copy> sudo wget https://objectstorage.us-ashburn-1.oraclecloud.com/p/4joJKyI1NFAXNImd1V-zAV0kOb7pIauzy8QKjMK4BbpBTcYVfkxoAH7HB3P0brMK/n/idazzjlcjqzj/b/mysql_security/o/emp_apps.zip</copy>
+    ```
+
+3. unzip Application code
+
+    ```bash
+    <copy>sudo unzip emp_apps.zip</copy>
+    ```
+
+    ```bash
+    <copy>cd emp_apps</copy>
+    ```
+
+4. Replace the database IP in config.php file with your database IP and save the file.
+
+    ```bash
+    <copy>sudo nano config.php</copy>
+    ```
+
+5. Run the application as follows:
+
+    http://computeIP/emp_apps/list_employees.php
+
+    ![MDS](./images/airport_web.png "airport-web-php")
+
+You may now **proceed to the next lab**
 
 ## Acknowledgements
 
 - **Author** - Perside Foster, MySQL Solution Engineering
-
-- **Contributors** - Abhinav Agarwal, Senior Principal Product Manager, Nick Mader, MySQL Global Channel Enablement & Strategy Manager
-- **Last Updated By/Date** - Perside Foster, MySQL Solution Engineering, May 2023
+- **Last Updated By/Date** - Perside Foster, MySQL Solution Engineering, August 2024
