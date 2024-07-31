@@ -25,7 +25,7 @@ In this lab, you will be guided through the following tasks:
 1. Open OCI Cloud Consloe. If not already connected with SSH, on Command Line, connect to the Compute instance using SSH ... be sure replace the  "private key file"  and the "new compute instance ip"
 
      ```bash
-    <copy>ssh -i private_key_file opc@new_compute_instance_ip</copy>
+    <copy>ssh -i id_rsa opc@public_ip</copy>
      ```
 
 2. Install app server
@@ -116,7 +116,7 @@ In this lab, you will be guided through the following tasks:
 
    Example: http://129.213.167.../info.php
 
-## Task 3: Create MySQL HeatWave / PHP connect app
+## Task 3: Create MySQL PHP connect app
 
 1. Security update"   set SELinux to allow Apache to connect to MySQL
 
@@ -139,10 +139,10 @@ In this lab, you will be guided through the following tasks:
      ```bash
         <copy><?php
     // Database credentials
-    define('DB_SERVER', '10.0.1...');// MDS server IP address
+    define('DB_SERVER', 'localhost');// MDS server IP address
     define('DB_USERNAME', 'admin');
-    define('DB_PASSWORD', 'Welcome#12...');
-    define('DB_NAME', 'world');
+    define('DB_PASSWORD', 'Welcome1!');
+    define('DB_NAME', 'mysql');
     //Attempt to connect to MySQL database
     $link = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
     // Check connection
@@ -173,26 +173,22 @@ In this lab, you will be guided through the following tasks:
     ```bash
     <copy>
     <?php
-    require_once "config.php";
-    $query = "SELECT id,name FROM world.city; ";
-    if ($stmt = $link->prepare($query)) {
-    $stmt->execute();
-    $stmt->bind_result($id,$name);
-    echo "<table>";
-        echo "<tr>";
-        echo "<th>ID</th>";
-        echo "<th>CityName</th>";
-    echo "</tr>";
-
-    while ($stmt->fetch()) {
-        echo "<tr>";
-        echo "<td>" . $id ."</td>";
-        echo "<td>" . $name. "</td>";
-        echo "</tr>";
-    }
-
-    $stmt->close();
-    }
+        require_once "config.php";
+        $query = "SELECT user from mysql.user;";
+        if ($stmt = $link->prepare($query)) {
+            $stmt->execute();
+            $stmt->bind_result($user);
+            echo "<table>";
+            echo "<tr>";
+            echo "<th>user</th>";
+            echo "</tr>";
+            while ($stmt->fetch()) {
+            echo "<tr>";
+            echo "<td>" . $user ."</td>";
+            echo "</tr>";
+            }
+            $stmt->close();
+        }
     ?>
     </copy>
     ```
