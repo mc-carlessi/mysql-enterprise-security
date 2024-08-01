@@ -33,7 +33,7 @@ This lab assumes you have:
 
 1. Install MySQL Enterprise Firewall on mysql-advanced using CLI
     ```
-    <span style="color:green">shell-mysql></span><copy>mysql -uroot -pWelcome1! -D mysql -e"source /usr/share/mysql-8.3/linux_install_firewall.sql"</copy>
+    <span style="color:green">shell-mysql></span><copy>mysql -uroot -pWelcome1! -D mysql -e"source /usr/share/mysql-8.4/linux_install_firewall.sql"</copy>
     ```
 
 2. Connect to the instance with administrative account <span style="color:red">first SSH connection - administrative</span>

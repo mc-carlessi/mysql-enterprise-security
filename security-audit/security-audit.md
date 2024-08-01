@@ -18,7 +18,6 @@ In this lab, you will:
 
 This lab assumes you have:
 
-* An Oracle account
 * All previous labs successfully completed
 
 * Lab standard  
@@ -27,6 +26,7 @@ This lab assumes you have:
   * ![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh> the command must be executed in MySQL shell
 
 **Notes:**
+
 * Audit can be activated and configured without stopping the instance. In the lab we edit my.cnf to see how to do it in this way
 
 ## Task 1: Setup Audit Log
@@ -46,7 +46,7 @@ This lab assumes you have:
     **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
 
     ```
-    <copy>mysql -uroot -pWelcome1! -h 127.0.0.1 -P 3306 -D mysql < /usr/share/mysql-8.3/audit_log_filter_linux_install.sql</copy>
+    <copy>mysql -uroot -pWelcome1! -h 127.0.0.1 -P 3306 -D mysql < /usr/share/mysql-8.4/audit_log_filter_linux_install.sql</copy>
     ```
 
     b. Edit the my.cnf setting in /mysql/etc/my.cnf
@@ -78,19 +78,22 @@ This lab assumes you have:
 
 3. Connect to your mysql-enterprise with administrative user
 
-  **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
+    **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
+
     ```
     <copy>mysql -uroot -pWelcome1! -h 127.0.0.1 -P 3306</copy>
     ```
 
     a. Using the <span style="color:red">Administrative Account</span> , create a Audit Filter for all activity and all users. Privileges required are AUDIT_ADMIN and SUPER
 
- **![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>** 
+    **![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>**
+
     ```
     <copy>SELECT audit_log_filter_set_filter('log_all', '{ "filter": { "log": true } }');</copy>
     ```
 
- **![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>** 
+    **![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>**
+
     ```
     <copy>SELECT audit_log_filter_set_user('%', 'log_all');</copy>
     ```
@@ -107,9 +110,22 @@ This lab assumes you have:
     <copy>sudo tail -f /var/lib/mysql/audit.log</copy>
     ```
 
-## Task 2: Use Audit
+## Task 2: Use Audit - log all activity and all users
 
-1. Login to mysql-enterprise with the user <span style="color:red">appuser1 Connection</span>, then submit some commands
+1. Run the application as follows (The application should run):
+
+    <http://computeIP/emp_apps/list_employees.php>
+
+2. Go to the Monitor terminal to view the output of the audit.log file
+    ![MDS](./images/audit-log.png "audit-log")
+
+3. Connect to a new instance of the server with SSH
+
+    ```
+    <copy>ssh -i ~/.ssh/id_rsa opc@<your_compute_instance_ip></copy>
+    ```
+
+4. Login to mysql-enterprise with the user <span style="color:red">appuser1 Connection</span>, then submit some commands
 
     a. **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
 
@@ -135,9 +151,14 @@ This lab assumes you have:
     <copy>SELECT emp_no,salary FROM employees.salaries WHERE salary > 90000;</copy>
     ```
 
-2. Let's setup Audit to only log connections. Using the <span style="color:red">Administrative Account</span>, create a Audit Filter for all connections
+5. Go to the Monitor terminal to view the output of the audit.log file
+
+## Task 3: Use Audit - only log connections
+
+1. Let's setup Audit to only log connections. Using the <span style="color:red">Administrative Account</span>, create a Audit Filter for all connections
 
     **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
+
     ```
     <copy>mysql -uroot -pWelcome1! -h 127.0.0.1 -P 3306</copy>
     ```
@@ -160,7 +181,7 @@ This lab assumes you have:
     <copy>SELECT audit_log_filter_set_user('%', 'log_conn_events');</copy>
     ```
 
-3. Login to mysql-enterprise with the user <span style="color:red">appuser1 Connection</span>, then submit some commands
+2. Login to mysql-enterprise with the user <span style="color:red">appuser1 Connection</span>, then submit some commands
 
     a. **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
 
@@ -186,9 +207,12 @@ This lab assumes you have:
     <copy>SELECT emp_no,salary FROM employees.salaries WHERE salary > 90000;</copy>
     ```
 
-4. Let's setup Audit to only log unique users. Using the <span style="color:red">Administrative Account</span>, create a Audit Filter for appuser1
+## Task 4: Use Audit - only log unique users
+
+1. Let's setup Audit to only log unique users. Using the <span style="color:red">Administrative Account</span>, create a Audit Filter for appuser1
 
     **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
+
     ```
     <copy>mysql -uroot -pWelcome1! -h 127.0.0.1 -P 3306</copy>
     ```
@@ -225,7 +249,7 @@ This lab assumes you have:
     <copy>SELECT audit_log_filter_flush();</copy>
     ```
 
-5. Login to mysql-enterprise with the user <span style="color:red">appuser1 Connection</span>, then submit some commands
+2. Login to mysql-enterprise with the user <span style="color:red">appuser1 Connection</span>, then submit some commands
 
     a. **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
 
@@ -257,7 +281,7 @@ This lab assumes you have:
     <copy>quit;</copy>
     ```
 
-6. Login to mysql-enterprise with the user <span style="color:red">appuser2 Connection</span>, then submit some commands
+3. Login to mysql-enterprise with the user <span style="color:red">appuser2 Connection</span>, then submit some commands
 
     a. **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
 
@@ -283,9 +307,12 @@ This lab assumes you have:
     <copy>SELECT emp_no,salary FROM employees.salaries WHERE salary > 90000;</copy>
     ```
 
-7. Let's setup Audit to only log table accesss. Using the <span style="color:red">Administrative Account</span>, create a Audit Filter for tables
+## Task 5: Use Audit - only log table accesss
+
+1. Let's setup Audit to only log table accesss. Using the <span style="color:red">Administrative Account</span>, create a Audit Filter for tables
 
     **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
+
     ```
     <copy>mysql -uroot -pWelcome1! -h 127.0.0.1 -P 3306</copy>
     ```
@@ -321,7 +348,6 @@ This lab assumes you have:
     ```
     <copy>SELECT audit_log_filter_flush();</copy>
     ```
-    
 
     d.  Login to mysql-enterprise with the user <span style="color:red">appuser1 Account</span>, then submit some commands
 
@@ -349,9 +375,12 @@ This lab assumes you have:
     <copy>SELECT emp_no,salary FROM employees.salaries WHERE salary > 90000;</copy>
     ```
 
-8. Let's setup Audit to only log access to salaries tables. Using the <span style="color:red">Administrative Account</span>, create a Audit Filter for salaries
+## Task 6: Use Audit - only log access to salaries tables
+
+1. Let's setup Audit to only log access to salaries tables. Using the <span style="color:red">Administrative Account</span>, create a Audit Filter for salaries
 
     **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
+
     ```
     <copy>mysql -uroot -pWelcome1! -h 127.0.0.1 -P 3306</copy>
     ```
@@ -374,32 +403,34 @@ This lab assumes you have:
     ```
     <copy>SET @f='
 
- {
-    "filter": {
-       "class":
-         {
-          "name": "table_access",
-          "event":
+    {
+        "filter": {
+        "class":
             {
-              "name": [ "insert", "update", "delete" ],
-              "log": { "field": { "name": "table_name.str", "value": "salaries" }}
+            "name": "table_access",
+            "event":
+                {
+                "name": [ "insert", "update", "delete" ],
+                "log": { "field": { "name": "table_name.str", "value": "salaries" }}
+                }
             }
-         }
-     }
-}';</copy>
+        }
+    }';</copy>
     ```
 
    c. **![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>**
+
     ```
     <copy>SELECT audit_log_filter_set_filter('salary_insert', @f);</copy>
     ```
 
    d. **![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>**
+
     ```
     <copy>SELECT audit_log_filter_set_user('%', 'salary_insert');</copy>
     ```
 
-9. Login as <span style="color:red">appuser1 Connection</span> and run a query against the salaries table;
+2. Login as <span style="color:red">appuser1 Connection</span> and run a query against the salaries table;
 
     a. **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
 
@@ -426,7 +457,16 @@ This lab assumes you have:
     <copy>UPDATE employees.salaries SET salary = 74234 WHERE emp_no = 10001;</copy>
     ```
 
-10. Some Administrative commands for checking Audit filters and users.  Log in using the <span style="color:red">Administrative Account</span> 
+3. Run the application as follows (The application should run):
+
+    <http://computeIP/emp_apps/list_employees.php>
+
+4. Go to the Monitor terminal to view the output of the audit.log file
+    ![MDS](./images/audit-log.png "audit-log")
+
+## Task 7: Administrative commands for checking Audit
+
+1. Some Administrative commands for checking Audit filters and users.  Log in using the <span style="color:red">Administrative Account</span>
 
    **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
     ```
@@ -469,7 +509,7 @@ This lab assumes you have:
     <copy>SELECT PLUGIN_NAME, PLUGIN_STATUS FROM INFORMATION_SCHEMA.PLUGINS WHERE PLUGIN_NAME LIKE 'audit%';</copy>
     ```
 
-11. You can check the documentation about other Log filters & policies
+2. You can check the documentation about other Log filters & policies
 
 ## Learn More
 
