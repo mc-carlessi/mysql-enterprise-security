@@ -186,8 +186,8 @@ You may now **proceed to the next lab**
 
 ## Learn More
 
-- [CREATE USER](https://dev.mysql.com/doc/refman/8.0/en/create-user.html)
-- [MySQL Access Control Lists](https://dev.mysql.com/doc/refman/8.0/en/access-control.html)
+- [CREATE USER](https://dev.mysql.com/doc/en/create-user.html)
+- [MySQL Access Control Lists](https://dev.mysql.com/doc/en/access-control.html)
 
 ## Acknowledgements
 

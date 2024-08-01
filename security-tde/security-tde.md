@@ -26,7 +26,7 @@ This lab assumes you have:
     
 
 **Notes:**
-- [InnoDB Data At Rest](https://dev.mysql.com/doc/refman/8.0/en/innodb-data-encryption.html)
+- [InnoDB Data At Rest](https://dev.mysql.com/doc/en/innodb-data-encryption.html)
 
 
 ## Task 1: Install and setup TDE  
@@ -141,8 +141,8 @@ This lab assumes you have:
 
 ## Learn More
 
-* [Keyring Plugins](https://dev.mysql.com/doc/refman/8.0/en/keyring.html)
-* [InnoDB Data At Rest](https://dev.mysql.com/doc/refman/8.0/en/innodb-data-encryption.html)
+* [Keyring Plugins](https://dev.mysql.com/doc/en/keyring.html)
+* [InnoDB Data At Rest](https://dev.mysql.com/doc/en/innodb-data-encryption.html)
 
 ## Acknowledgements
 * **Author** - Dale Dasker, MySQL Solution Engineering

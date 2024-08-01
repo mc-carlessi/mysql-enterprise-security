@@ -28,7 +28,7 @@ This lab assumes you have:
 
 **Notes:**
 - Data masking has more functions than what we test in the lab. The full list of functions is here
-- https://dev.mysql.com/doc/refman/8.0/en/data-masking-usage.html 
+- https://dev.mysql.com/doc/en/data-masking-usage.html 
 
 ## Task 1: Install masking plugin
 
@@ -202,10 +202,10 @@ This lab assumes you have:
 
 ## Learn More
 
-* [Enterprise Data Masking Documentation](https://dev.mysql.com/doc/refman/8.0/en/data-masking.html)
+* [Enterprise Data Masking Documentation](https://dev.mysql.com/doc/en/data-masking.html)
 * [Whitepaper: A MySQL Guide to PCI Compliance](https://www.mysql.com/why-mysql/white-papers/mysql-pci-data-security-compliance/)
 * [Whitepaper: MySQL Enterprise and the GDPR](https://www.mysql.com/why-mysql/white-papers/mysql-enterprise-edition-gdpr/)
-* [Whitepaper: MySQL Secure Deployment Guide](https://dev.mysql.com/doc/mysql-secure-deployment-guide/8.0/en/)
+* [Whitepaper: MySQL Secure Deployment Guide](https://dev.mysql.com/doc/mysql-secure-deployment-guide/en/)
 
 ## Acknowledgements
 * **Last Updated By/Date** - Dale Dasker, January 2023

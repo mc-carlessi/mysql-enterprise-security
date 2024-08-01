@@ -27,7 +27,7 @@ This lab assumes you have:
 
 **Notes:**
 - The detailed documentation for MySQL Enterprise Firewall is located here:
-- https://dev.mysql.com/doc/refman/8.0/en/firewall.html
+- https://dev.mysql.com/doc/en/firewall.html
 
 ## Task 1: Account Profiles
 

@@ -30,7 +30,7 @@ This lab assumes you have:
 
 **Notes:**
 - Thread Pooling has more functions than what we test in the lab. The full list of functions is here
-- https://dev.mysql.com/doc/refman/8.0/en/thread-pool.html
+- https://dev.mysql.com/doc/en/thread-pool.html
 
 **Presentation**
 - [Presentation](files/MySQL_ThreadPool.pdf)
@@ -425,7 +425,7 @@ This lab assumes you have:
 
 ## Learn More
 
-* [Thread Pool Plugins](https://dev.mysql.com/doc/refman/8.0/en/thread-pool.html)
+* [Thread Pool Plugins](https://dev.mysql.com/doc/en/thread-pool.html)
 * [sysBench code](https://github.com/akopytov/sysbench/tree/master)
 * [sysBench useage](https://www.mortensi.com/2021/06/how-to-install-and-use-sysbench/)
 * [BMK Toolkit useage](http://dimitrik.free.fr/blog/posts/mysql-perf-bmk-kit.html)

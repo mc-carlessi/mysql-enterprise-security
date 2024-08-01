@@ -29,7 +29,7 @@ Estimated Lab Time: -- minutes
 *(optional - include links to docs, white papers, blogs, etc)*
 
 * [URL text 1](http://docs.oracle.com)
-* [URL text 2](http://docs.oracle.com)
+
 
 ## Acknowledgements
 * **Last Updated By/Date** - <Dale Dasker, January 2023

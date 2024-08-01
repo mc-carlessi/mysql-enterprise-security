@@ -513,8 +513,8 @@ This lab assumes you have:
 
 ## Learn More
 
-* [Writing Audit Filters](https://dev.mysql.com/doc/refman/8.0/en/audit-log-filtering.html)
-* [Audit Filter Definitions](https://dev.mysql.com/doc/refman/8.0/en/audit-log-filter-definitions.html)
+* [Writing Audit Filters](https://dev.mysql.com/doc/en/audit-log-filtering.html)
+* [Audit Filter Definitions](https://dev.mysql.com/doc/en/audit-log-filter-definitions.html)
 
 ## Acknowledgements
 

@@ -122,7 +122,7 @@ This lab assumes you have:
     ```
     <copy>OPTIMIZE TABLE city_part;</copy>
     ```
-    **warning is expected:** https://dev.mysql.com/doc/refman/8.0/en/optimize-table.html
+    **warning is expected:** https://dev.mysql.com/doc/en/optimize-table.html
 
 ## Task 3:  Handle statistics
 
