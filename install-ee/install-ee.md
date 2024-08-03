@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Detailed Installation of MySQL Enterprise Edition 8.0 and MySQL Shell on Linux
+Detailed Installation of MySQL Enterprise Edition 8 and MySQL Shell on Linux
 
 Objective: RPM Installation of MySQL 8 Enterprise on Linux
 
@@ -14,6 +14,7 @@ Estimated Time: 15 minutes
 ### Objectives
 
 In this lab, you will:
+
 * Install MySQL Enterprise Edition
 * Start and test MySQL Enterpriese Edition Install
 * Install MySQL Shell and Connect to MySQL Enterprise 

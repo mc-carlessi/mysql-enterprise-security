@@ -16,27 +16,26 @@ In this lab, you will:
 ### Prerequisites (Optional)
 
 This lab assumes you have:
-* An Oracle account
+
 * All previous labs successfully completed
 
 * Lab standard  
     - ![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell> the command must be executed in the Operating System shell
     - ![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql> the command must be executed in a client like MySQL, MySQL Workbench
     - ![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh> the command must be executed in MySQL shell
-    
 
 **Notes:**
-- [InnoDB Data At Rest](https://dev.mysql.com/doc/en/innodb-data-encryption.html)
-
+    - [InnoDB Data At Rest](https://dev.mysql.com/doc/en/innodb-data-encryption.html)
 
 ## Task 1: Install and setup TDE  
-1.	Install MySQL Enterprise Transparent Data Encrytption on mysql-enterprise using <span style="color:red">Administrative Account</span> MySQL client connections 
+
+1. Install MySQL Enterprise Transparent Data Encrytption on mysql-enterprise using <span style="color:red">Administrative Account</span> MySQL client connections 
 
     **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>** 
     ```
     <copy>mysql -u root -pWelcome1! -P3306 -h127.0.0.1 </copy>
     ```
-2.	Check to see if any keyring plugin is installed and load if not:
+2. Check to see if any keyring plugin is installed and load if not:
 
     a. **![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>** 
     ```
@@ -66,7 +65,7 @@ This lab assumes you have:
     <copy>sudo service mysqld restart</copy>
     ```
 
-3.	"Spy" on employees.employees table
+3. "Spy" on employees.employees table
 
     a. **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
     ```
@@ -74,7 +73,7 @@ This lab assumes you have:
     ```
 
 
-4.	Now with <span style="color:red">Administrative Account</span> we enable Encryption on the employees.employees table:
+4. Now with <span style="color:red">Administrative Account</span> we enable Encryption on the employees.employees table:
 
     a.  **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>** 
     ```
@@ -92,7 +91,7 @@ This lab assumes you have:
     ```
 
 
-5.	"Spy" on employees.employees table again:
+5. "Spy" on employees.employees table again:
 
     a. **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
     ```
@@ -100,7 +99,7 @@ This lab assumes you have:
     ```
 
 
-6.	Administrative commands
+6. Administrative commands
 
     a. Get details on encrypted key file:
     **![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>** 
@@ -138,12 +137,13 @@ This lab assumes you have:
     <copy>SELECT SPACE, NAME, SPACE_TYPE, ENCRYPTION FROM INFORMATION_SCHEMA.INNODB_TABLESPACES WHERE ENCRYPTION='Y'\G</copy>
     ```
 
-
 ## Learn More
 
 * [Keyring Plugins](https://dev.mysql.com/doc/en/keyring.html)
 * [InnoDB Data At Rest](https://dev.mysql.com/doc/en/innodb-data-encryption.html)
 
 ## Acknowledgements
+
 * **Author** - Dale Dasker, MySQL Solution Engineering
+
 * **Last Updated By/Date** - Dale Dasker, January 2023
