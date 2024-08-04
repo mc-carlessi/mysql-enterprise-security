@@ -177,7 +177,7 @@ This lab assumes you have:
     <copy>GRANT ALL PRIVILEGES ON employees.* TO 'appuser1'@'127.0.0.1';</copy>
     ```
 
-6. Run the application as follows (The application will run):
+2. Run the application as follows (The application will run):
 
     http://computeIP/emp_apps/list_employees.php
 

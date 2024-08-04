@@ -161,6 +161,10 @@ This lab assumes you have:
     <copy>sudo strings "/var/lib/mysql/mysql.ibd" | head -n70</copy>
     ```
 
+6. Run the application to see if it was affected by TDE:
+
+    http://computeIP/emp_apps/list_employees.php
+
 You may now **proceed to the next lab**
 
 ## Learn More
