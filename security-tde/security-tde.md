@@ -11,7 +11,9 @@ Estimated Lab Time: 20 minutes
 ### Objectives
 
 In this lab, you will:
-* Install and encrypt Data Files
+
+* Setup the  manifest file and configation file needed to use TDE
+* Practice using TDE
 
 ### Prerequisites (Optional)
 
@@ -27,79 +29,100 @@ This lab assumes you have:
 **Notes:**
     - [InnoDB Data At Rest](https://dev.mysql.com/doc/en/innodb-data-encryption.html)
 
-## Task 1: Install and setup TDE  
+## Task 1: Setup required files for TDE
 
-1. Install MySQL Enterprise Transparent Data Encrytption on mysql-enterprise using <span style="color:red">Administrative Account</span> MySQL client connections 
+1. SSH into server intance and Create the global manifest file
 
     **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>** 
     ```
-    <copy>mysql -u root -pWelcome1! -P3306 -h127.0.0.1 </copy>
-    ```
-2. Check to see if any keyring plugin is installed and load if not:
-
-    a. **![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>** 
-    ```
-    <copy>SELECT PLUGIN_NAME, PLUGIN_STATUS FROM INFORMATION_SCHEMA.PLUGINS WHERE PLUGIN_NAME LIKE 'keyring%'; </copy>
+    <copy>cd /usr/sbin </copy>
     ```
 
-    b. Edit the my.cnf setting in /etc/my.cnf
-
-    **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
     ```
-    <copy>sudo nano /etc/my.cnf</copy>
+    <copy>sudo nano mysqld.my</copy>
     ```
+    
+2. copy the following  content to mysqld.my save and exit
 
-    b. Add the following lines to load the plugin and set the encrypted key file
-
-    **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
     ```
-    <copy>early-plugin-load=keyring_encrypted_file.so    
-    keyring_encrypted_file_data=/var/lib/mysql-keyring/keyring-encrypted    
-    keyring_encrypted_file_password=V&rySec4eT</copy>    
+    <copy>
+    {
+        "components": "file://component_keyring_encrypted_file"
+    }
+    </copy>
     ```
 
-    c. Restart MySQL
+3. Create the global configuration file
+
+    **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>** 
+
+    ```
+    <copy>cd /usr/lib64/mysql/plugin/</copy>
+    ```
+
+    ```
+    <copy>sudo nano component_keyring_encrypted_file.cnf</copy>
+    ```
+
+4. copy the following  content to component_keyring_encrypted_file.cnf save and exit
+
+    ```
+    <copy>
+    {
+          "path": "/var/lib/mysql-keyring/keyring-encrypted",
+          "password": "V&rySec4eT",
+          "read_only": false
+    }
+    </copy>
+    ```
+
+5.  Restart MySQL
 
     **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
     ```
     <copy>sudo service mysqld restart</copy>
     ```
 
-3. "Spy" on employees.employees table
+## Task 2: Use TDE
+
+1. "Spy" on employees.employees table
 
     a. **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
     ```
     <copy>sudo strings "/var/lib/mysql/employees/employees.ibd" | head -n50</copy>
     ```
 
-
-4. Now with <span style="color:red">Administrative Account</span> we enable Encryption on the employees.employees table:
+2. Now with <span style="color:red">Administrative Account</span> we enable Encryption on the employees.employees table:
 
     a.  **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>** 
     ```
     <copy>mysql -u root -pWelcome1! -P3306 -h127.0.0.1 </copy>
     ```
 
-    b. **![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>**
+    b. Verify the component is loaded and active: **![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>**
+    ```
+    <copy>SELECT * FROM performance_schema.keyring_component_status;</copy>
+    ```
+
+    c. **![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>**
     ```
     <copy>USE employees;</copy>
     ```
 
-    c. **![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>** 
+    d. **![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>** 
     ```
     <copy>ALTER TABLE employees ENCRYPTION = 'Y';</copy>
     ```
 
+3. "Spy" on employees.employees table again:
 
-5. "Spy" on employees.employees table again:
-
-    a. **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
+    **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
     ```
     <copy>sudo strings "/var/lib/mysql/employees/employees.ibd" | head -n50</copy>
     ```
 
 
-6. Administrative commands
+4. Administrative commands
 
     a. Get details on encrypted key file:
     **![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>** 
@@ -125,25 +148,28 @@ This lab assumes you have:
     <copy>ALTER TABLESPACE mysql ENCRYPTION = 'Y';</copy>
     ```
 
-    e. Validate encryption of the mysql System Tables:
-    **![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>** 
-    ```
-    <copy>sudo strings "/var/lib/mysql/mysql.ibd" | head -n70</copy>
-    ```
-
-    f. Show all the encrypted tables:
+    e. Show all the encrypted tables:
     **![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>** 
     ```
     <copy>SELECT SPACE, NAME, SPACE_TYPE, ENCRYPTION FROM INFORMATION_SCHEMA.INNODB_TABLESPACES WHERE ENCRYPTION='Y'\G</copy>
     ```
+
+5. Validate encryption of the mysql System Tables:
+    **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
+
+    ```
+    <copy>sudo strings "/var/lib/mysql/mysql.ibd" | head -n70</copy>
+    ```
+
+You may now **proceed to the next lab**
 
 ## Learn More
 
 * [Keyring Plugins](https://dev.mysql.com/doc/en/keyring.html)
 * [InnoDB Data At Rest](https://dev.mysql.com/doc/en/innodb-data-encryption.html)
 
+
 ## Acknowledgements
 
 * **Author** - Dale Dasker, MySQL Solution Engineering
-
-* **Last Updated By/Date** - Dale Dasker, January 2023
+* **Last Updated By/Date** - Perside Foster, MySQL Solution Engineering, August 2024

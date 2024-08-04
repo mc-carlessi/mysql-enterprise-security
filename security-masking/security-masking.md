@@ -200,6 +200,8 @@ This lab assumes you have:
     <copy>SELECT gen_rnd_email();</copy>
     ```
 
+You may now **proceed to the next lab**
+
 ## Learn More
 
 * [Enterprise Data Masking Documentation](https://dev.mysql.com/doc/en/data-masking.html)
@@ -208,4 +210,6 @@ This lab assumes you have:
 * [Whitepaper: MySQL Secure Deployment Guide](https://dev.mysql.com/doc/mysql-secure-deployment-guide/en/)
 
 ## Acknowledgements
-* **Last Updated By/Date** - Dale Dasker, January 2023
+
+* **Author** - Dale Dasker, MySQL Solution Engineering
+* **Last Updated By/Date** - Perside Foster, MySQL Solution Engineering, August 2024

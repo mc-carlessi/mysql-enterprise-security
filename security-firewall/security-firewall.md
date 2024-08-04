@@ -231,9 +231,7 @@ CALL mysql.sp_firewall_group_enlist('fwgrp', 'member4@localhost');</copy>
     <span style="color:blue">mysql></span><copy>SHOW GLOBAL STATUS LIKE '%firewall%';</copy>
     ```
 
-
-
-## Optional: 
+You may now **proceed to the next lab**
 
 
 ## Learn More
@@ -244,5 +242,6 @@ CALL mysql.sp_firewall_group_enlist('fwgrp', 'member4@localhost');</copy>
 * [Enterprise Firewall with Drupal](https://dev.mysql.com/blog-archive/group-profiles-in-mysql-enterprise-firewall/)
 
 ## Acknowledgements
-* **Author** - Dale Dasker, MySQL Engineering
-* **Last Updated By/Date** - <Dale Dasker, February 2024
+
+* **Author** - Dale Dasker, MySQL Solution Engineering
+* **Last Updated By/Date** - Perside Foster, MySQL Solution Engineering, August 2024

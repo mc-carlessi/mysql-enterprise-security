@@ -511,6 +511,7 @@ This lab assumes you have:
 
 2. You can check the documentation about other Log filters & policies
 
+You may now **proceed to the next lab**
 ## Learn More
 
 * [Writing Audit Filters](https://dev.mysql.com/doc/en/audit-log-filtering.html)
