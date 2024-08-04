@@ -176,6 +176,14 @@ This lab assumes you have:
     <copy>SELECT * FROM employees.employees_mask LIMIT 5;</copy>
     ```
 
+13. Run the application to see the SSN and Email data:
+
+    http://computeIP/emp_apps/employees_mask.php
+
+14. Run the application to see the masked SSN data:
+
+    http://computeIP/emp_apps/employees_mask_after.php
+
 
 ## Task 4: *** OPTIONAL *** Discussion and use  Masking functions and random generators
 
