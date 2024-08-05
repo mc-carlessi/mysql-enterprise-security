@@ -1,5 +1,5 @@
 {
-    "workshoptitle": "MySQL Enterprise Edition - Security Workshop - Student",
+    "workshoptitle": "MySQL Enterprise Edition - Security Workshop - Instructor",
     "include": {"starter-file.sql":"../../data-load/files/starter-file.sql",
                 "sample.json":"../../data-load/files/sample.json",
                 "step2.md":"../../data-load/files/step2.md"},
@@ -10,6 +10,7 @@
             "description": "The Introduction is always first. The title and contents menu title match for the Introduction.",
             "filename": "../../introduction/introduction.md"
         },
+
         {
             "title": "Lab 1: Setup Environment",
             "description": "Setup Environment",
@@ -54,11 +55,7 @@
             "description": "Security - MySQL Firewall",
             "filename": "../../security-firewall/security-firewall.md"
         },
-        {
-            "title": "Lab 10: Addemdum",
-            "description": "Addemdum",
-            "filename": "../../addendum/addendum.md"
-        },
+
         {
             "title": "Need Help?",
             "description": "Solutions to Common Problems and Directions for Receiving Live Help",
