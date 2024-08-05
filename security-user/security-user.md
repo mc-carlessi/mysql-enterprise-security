@@ -87,16 +87,17 @@ This lab assumes you have:
     **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
 
     ```bash
-    <copy>cd /var/www/html</copy>
+    <copy>cd /var/www/html/emp_apps</copy>
     ```
 
-2. Replace the username and server  in config.php file with **appuser1** and **127.0.0.1** then save the file.
+2. Replace the username and server  in config.php file with **appuser1** then save the file.
 
     **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
 
     ```bash
     <copy>sudo nano config.php</copy>
     ```
+    ![MDS](./images/appuser-config.png "emp-list-php")
 
 3. Run the application as follows:
 
@@ -140,7 +141,7 @@ This lab assumes you have:
     **![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>**
 
     ```
-    <copy>SHOW GRANTS FOR 'appuser1'@'127.0.0.1';</copy
+    <copy>SHOW GRANTS FOR 'appuser1'@'127.0.0.1';</copy>
     ```
 
 3. Run the application as follows (The application should run):

@@ -221,11 +221,13 @@ In this lab, you will be guided through the following tasks:
     <copy>cd emp_apps</copy>
     ```
 
-4. Replace the database IP in config.php file with your database IP and save the file.
+4. Replace the DB_USERNAME to **admin** in config.php file and save the file.
 
     ```bash
     <copy>sudo nano config.php</copy>
     ```
+
+    ![MDS](./images/admin-config.png "emp-list-php")
 
 5. Run the application as follows:
 
