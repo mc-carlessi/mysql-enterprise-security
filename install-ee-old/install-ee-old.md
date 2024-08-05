@@ -33,7 +33,7 @@ This lab assumes you have:
 ## Task 1: Install MySQL Enterprise Edition using Generic Linux Tar Image
 
 **Note:** If not already connected with SSH
-- connect to **myclient** instance using Cloud Shell (**Example:** ssh -i ~/.ssh/id_rsa opc@132.145.17….)
+- connect to **myserver** instance using Cloud Shell (**Example:** ssh -i ~/.ssh/id_rsa opc@132.145.17….)
     ```
     <copy>ssh -i ~/.ssh/id_rsa opc@<your_compute_instance_ip></copy>
     ```

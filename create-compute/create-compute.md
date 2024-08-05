@@ -102,7 +102,7 @@ You will need a compute Instance to connect to your brand new MySQL database.
 
  Enter Name
     ```
-    <copy>myclient</copy>
+    <copy>myserver</copy>
     ```   
 7. Make sure **(root)** compartment is selected 
 
@@ -140,7 +140,7 @@ You will need a compute Instance to connect to your brand new MySQL database.
 
 ## Task 3:Connect to Compute Instance with SSH Key
 
-To connect to **myclient** you will need to properly setup your SSH command. Do the following steps:
+To connect to **myserver** you will need to properly setup your SSH command. Do the following steps:
 
 1. Copy the public IP address of the active Compute Instance to a notepad
 
@@ -149,18 +149,18 @@ To connect to **myclient** you will need to properly setup your SSH command. Do 
     Instances
     ![CONNECT](./images/db-list.png " ")
 
-    b. Click the `myclient` Compute Instance link
+    b. Click the `myserver` Compute Instance link
     
     ![CONNECT](./images/05compute08-b.png " ")
     
-    c. Copy `myclient` plus  the `Public IP Address` to the notepad
+    c. Copy `myserver` plus  the `Public IP Address` to the notepad
 
     
-2. Indicate the location of the private key you created earlier with **myclient**. 
+2. Indicate the location of the private key you created earlier with **myserver**. 
     
     Enter the username **opc** and the Public **IP Address**.
 
-    Note: The **myclient**  instance shows the  Public IP Address as mentioned on TASK 5: #11
+    Note: The **myserver**  instance shows the  Public IP Address as mentioned on TASK 5: #11
     
     (Your SSH login command should look like this: 
     
