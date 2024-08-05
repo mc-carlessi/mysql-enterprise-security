@@ -25,7 +25,7 @@ In this lab, you will be guided through the following tasks:
 1. Open OCI Cloud Consloe. If not already connected with SSH, on Command Line, connect to the Compute instance using SSH ... be sure replace the  "private key file"  and the "new compute instance ip"
 
      ```bash
-    <copy>ssh -i id_rsa opc@public_ip</copy>
+    <copy>ssh -i ~/.ssh/id_rsa opc@<your_compute_instance_ip></copy>
      ```
 
 2. Install app server

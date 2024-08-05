@@ -28,8 +28,12 @@ In this lab, you will:
     **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
 
     ```
-    <copy>ssh -i id_rsa opc@public_ip </copy>
+    <copy>ssh -i ~/.ssh/id_rsa opc@<your_compute_instance_ip></copy>
     ```
+
+    ![MDS](./images/ssh-login.png "ssh-login")
+
+
 
 2. Make /workshop Directory
 

@@ -41,11 +41,11 @@ Please note that now you have an instance on the server on port 3306. To connect
 - UNIX socket:
 - TCP port:
 
-## Task 2: Connect to Port 3306
+## Task 2: Connect to Ports
 
 1.  **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
     ```
-    <copy>mysql -u root -p --protocol=tcp</copy>
+    <copy>mysql -u admin -p --protocol=tcp</copy>
     ```
 
  **![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>** 
@@ -59,19 +59,20 @@ Please note that now you have an instance on the server on port 3306. To connect
     <copy>exit</copy>
     ```
 	
-2. Check a different port:
+2. Check a different port :
  **![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>**
 
     ```
-    <copy>mysql -uroot -p -h localhost -P3310 --protocol=tcp </copy>
+    <copy>mysql -uadmin -p -h localhost -P3310 --protocol=tcp </copy>
     ```
 
+    **Note:** Error MySQL is not configured to work with port 3310.
 
 ## Task 3: Learn Useful SQL Statements
 
 1. **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
     ```
-    <copy>mysql -uroot -pWelcome1! -h 127.0.0.1 -P 3306</copy>
+    <copy>mysql -uadmin -pWelcome1! -h 127.0.0.1 -P 3306</copy>
     ```
 
 2. **![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>** 

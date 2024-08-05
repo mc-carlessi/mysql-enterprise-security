@@ -134,7 +134,7 @@ This lab assumes you have:
 
 ## Task 3: Import Sample Databases
 
-1.	Import the employees demo database that is in /workshop/databases folder.
+1. Import the employees demo database that is in /workshop/databases folder.
 
   **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>** 
     ```
@@ -143,7 +143,7 @@ This lab assumes you have:
 
   **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>** 
     ```
-    <copy>mysql -uroot -pWelcome1! -P3306 -h 127.0.0.1 < ./employees.sql</copy>
+    <copy>mysql -uadmin -pWelcome1! -P3306 -h 127.0.0.1 < ./employees.sql</copy>
     ```
 You may now **proceed to the next lab**
 
