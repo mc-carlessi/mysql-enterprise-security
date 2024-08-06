@@ -41,7 +41,7 @@ This lab assumes you have:
     **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
 
     ```
-    <copy>mysql -uroot -pWelcome1! -h 127.0.0.1 -P 3306</copy>
+    <copy>mysql -uadmin -pWelcome1! -h 127.0.0.1 -P 3306</copy>
     ```
 
 2. Create a new user and restrict the user to your “Server” IP
@@ -64,25 +64,11 @@ This lab assumes you have:
     <copy>SHOW GRANTS FOR 'appuser1'@'127.0.0.1';</copy>
     ```
 
-## Task 2: Add additional users
+## Task 2: Connect to the Employee App using  `appuser1`@`127.0.0.1`
 
-1. Using the Administrative Connection, create a new user and restrict the user to your “Server” IP
+1. Open another terminal window or exit MySQL command. 
 
-    **![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>**
-
-    ```
-    <copy>CREATE USER 'appuser2'@'127.0.0.1' IDENTIFIED BY 'Welcome1!';</copy>
-    ```
-
-    **![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>**
-
-    ```
-    <copy>GRANT ALL PRIVILEGES ON employees.* TO 'appuser2'@'127.0.0.1';</copy>
-    ```
-
-## Task 3: Connect to the Employee App using  `appuser1`@`127.0.0.1`
-
-1. Go to the development folder
+    Go to the development folder
 
     **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
 
@@ -103,9 +89,9 @@ This lab assumes you have:
 
     http://computeIP/emp_apps/list_employees.php
 
-## Task 4: Use appuser1 connection - **** OPTIONAL ****
+## Task 3: Use appuser1 connection 
 
-1. Close and reopen the appuser1 connection for the user, then repeat above commands. There is a difference?
+1. exit MySQL command
 
     **![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>**
 
@@ -116,7 +102,7 @@ This lab assumes you have:
     **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
 
     ```
-    <copy>mysql -uroot -pWelcome1! -h 127.0.0.1 -P 3306</copy>
+    <copy>mysql -u appuser1 -pWelcome1! -h 127.0.0.1 -P 3306</copy>
     ```
 
     **![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>**
@@ -168,7 +154,7 @@ This lab assumes you have:
 
     http://computeIP/emp_apps/list_employees.php
 
-## Task 5: Restore user privileges  **** OPTIONAL ****
+## Task 4: Restore user privileges 
 
 1. Using the administrative connection restore user privileges to reuse it in next 
 
