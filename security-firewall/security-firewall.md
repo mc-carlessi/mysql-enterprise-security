@@ -121,7 +121,7 @@ This lab assumes you have:
 
 ## Task 4: Inspect MySQL Firewall 
 
-1. <span style="color:red">Administrative account</span> Login on a separate terminal as root.
+1. <span style="color:red">Administrative account</span> Login on a separate terminal as admin.
 
     a. **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>** 
     ```
@@ -191,7 +191,7 @@ CALL mysql.sp_firewall_group_enlist('fwgrp', 'member4@localhost');</copy>
     <span style="color:blue">mysql></span><copy>TRUNCATE TABLE mysql.slow_log;</copy>
     ```
 
-3. <span style="color:red">Administrative Account</span> Login on a separate terminal as root.
+3. <span style="color:red">Administrative Account</span> Login on a separate terminal as admin.
 
     a. **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>** 
     ```

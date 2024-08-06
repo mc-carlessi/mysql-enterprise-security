@@ -70,6 +70,7 @@ This lab assumes you have:
     ```
     <copy>SELECT mask_inner(last_name, 2,1) FROM employees.employees limit 10;</copy>
     ```
+
     b. **![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>** 
     ```
     <copy>SELECT mask_outer(last_name, 2,1) FROM employees.employees limit 10;</copy>
