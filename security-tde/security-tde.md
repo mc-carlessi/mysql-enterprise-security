@@ -92,11 +92,13 @@ This lab assumes you have:
     <copy>sudo strings "/var/lib/mysql/employees/employees.ibd" | head -n50</copy>
     ```
 
-2. Now with <span style="color:red">Administrative Account</span> we enable Encryption on the employees.employees table:
+2.  Open another terminal window.
+
+    Now with <span style="color:red">Administrative Account</span> we enable Encryption on the employees.employees table:
 
     a.  **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>** 
     ```
-    <copy>mysql -u root -pWelcome1! -P3306 -h127.0.0.1 </copy>
+    <copy>mysql -u admin -pWelcome1! -P3306 -h127.0.0.1 </copy>
     ```
 
     b. Verify the component is loaded and active: **![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>**
