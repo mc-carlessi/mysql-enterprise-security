@@ -22,7 +22,7 @@
             "filename": "../../install-ee/install-ee.md"
         },
         {
-            "title": "Lab 3: Verify MySQL Enterprise Edition - OPTIONAL ",
+            "title": "Lab 3: Verify MySQL Enterprise Edition",
             "description": "Verify MySQL Enterprise Edition",
             "filename": "../../verify-ee/verify-ee.md"
         },

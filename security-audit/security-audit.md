@@ -49,26 +49,7 @@ This lab assumes you have:
     <copy>mysql -uadmin -pWelcome1! -h 127.0.0.1 -P 3306 -D mysql < /usr/share/mysql-8.4/audit_log_filter_linux_install.sql</copy>
     ```
 
-    b. Edit the my.cnf setting in /mysql/etc/my.cnf
-
-    **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
-
-    ```
-    <copy>sudo nano /etc/my.cnf</copy>
-    ```
-
-    c. Add the following lines to the bottom of the file.  These lines will make sure that the audit plugin can't be unloaded and that the file is automatically rotated at 20 MB and format of data is JSON.
-
-    **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
-
-    ```
-    <copy>plugin-load=audit_log.so
-    audit_log=FORCE_PLUS_PERMANENT
-    audit_log_rotate_on_size=20971520
-    audit_log_format=JSON</copy>
-    ```
-
-    d. Restart MySQL (you can configure audit without restart the server, but here we show how to set the configuration file)
+    b. Restart MySQL (you can configure audit without restart the server, but here we show how to set the configuration file)
 
     **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
 
@@ -163,19 +144,31 @@ This lab assumes you have:
     <copy>mysql -uadmin -pWelcome1! -h 127.0.0.1 -P 3306</copy>
     ```
 
-    a. **![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>**
+   a. Remove  **log_all** filter:
+    **![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>**
+
+    ```
+    <copy>SELECT audit_log_filter_remove_filter('log_all ');</copy>
+    ```
+
+    **![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>**
+
+    ```
+    <copy>SELECT audit_log_filter_flush();</copy>
+    ```
+    b. **![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>**
 
     ```
     <copy>SET @f = '{ "filter": { "class": { "name": "connection" } } }';</copy>
     ```
 
-    b. **![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>**
+    c. **![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>**
 
     ```
     <copy>SELECT audit_log_filter_set_filter('log_conn_events', @f);</copy>
     ```
 
-    c. **![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>**
+    d. **![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>**
 
     ```
     <copy>SELECT audit_log_filter_set_user('%', 'log_conn_events');</copy>
@@ -207,20 +200,7 @@ This lab assumes you have:
     <copy>SELECT emp_no,salary FROM employees.salaries WHERE salary > 90000  limit 10;</copy>
     ```
 
-   e. Remove  **log_all** filter:
-    **![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>**
-
-    ```
-    <copy>SELECT audit_log_filter_remove_filter('log_all ');</copy>
-    ```
-
-    **![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>**
-
-    ```
-    <copy>SELECT audit_log_filter_flush();</copy>
-    ```
-
-## Task 4: Administrative commands for checking Audit
+## Task 4: Administrative commands for working Audit
 
 1. Some Administrative commands for checking Audit filters and users.  Log in using the <span style="color:red">Administrative Account</span>
 

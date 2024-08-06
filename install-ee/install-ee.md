@@ -153,5 +153,6 @@ You may now **proceed to the next lab**
 * [MySQL Shell Installation](https://dev.mysql.com/doc/mysql-shell/en/mysql-shell-install.html)
 
 ## Acknowledgements
+
 * **Author** - Dale Dasker, MySQL Solution Engineering
-* **Last Updated By/Date** - <Dale Dasker, February 2024
+* **Last Updated By/Date** - Perside Foster, MySQL Solution Engineering, August 2024

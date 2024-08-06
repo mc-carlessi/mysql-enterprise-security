@@ -16,9 +16,7 @@ Estimated Time: -- 10 minutes
 
 In this lab, you will:
 
-- Discuss MySQL Connection
-- Connect to Port 3306
-- Import Sample Databses
+- Connect to Ports
 - Learn Useful SQL Statements
 
 ### Prerequisites
@@ -32,18 +30,12 @@ This lab assumes you have:
     - ![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql> the command must be executed in a client like MySQL, MySQL Workbench
     - ![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh> the command must be executed in MySQL shell
 
-## Task 1: Discuss MySQL Connection
+## Task 1: MySQL Connection
 
-Please note that now you have an instance on the server on port 3306. To connect to MySQL, always use the IP address, otherwise you may connect to wrong instance. Here we practice connecting to the right one (port 3310 is intentionally wrong). To help you understand “why” these check lines (not all are always available…)
+Please note that now you have an instance on the server on port 3306. To connect to MySQL, always use the IP address, otherwise you may connect to wrong instance. Here we practice connecting to the right one (port 3310 is intentionally wrong). 
 
-- Current user:
-- Connection:
-- UNIX socket:
-- TCP port:
-
-## Task 2: Connect to Ports
-
-1.  **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
+1. Check MySQL port : 
+**![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
     ```
     <copy>mysql -u admin -p --protocol=tcp</copy>
     ```
@@ -68,7 +60,7 @@ Please note that now you have an instance on the server on port 3306. To connect
 
     **Note:** Error MySQL is not configured to work with port 3310.
 
-## Task 3: Learn Useful SQL Statements
+## Task 2: Learn Useful SQL Statements
 
 1. **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
     ```

@@ -14,7 +14,7 @@ In this lab, you will be guided through the following tasks:
 
 - Install Apache and PHP
 - Create PHP / MYSQL Connect Application
-- Create LAMP WEB Application
+- Migrate LAMP WEB Application
 
 ### Prerequisites
 

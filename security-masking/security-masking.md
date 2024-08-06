@@ -76,7 +76,7 @@ This lab assumes you have:
     <copy>SELECT mask_outer(last_name, 2,1) FROM employees.employees limit 10;</copy>
     ```
 
-## Task 3: Discussion and use  Masking functions and random generators
+## Task 3: Use Masking functions and random generators
 
 1. Create Table to generate and add masking data
 
@@ -186,7 +186,7 @@ This lab assumes you have:
     http://computeIP/emp_apps/employees_mask_after.php
 
 
-## Task 4: *** OPTIONAL *** Discussion and use  Masking functions and random generators
+## Task 4: Use Masking functions and random generators
 
 1. Discuss differences between  mask&#95;inner  and  mask&#95;outer 
 
