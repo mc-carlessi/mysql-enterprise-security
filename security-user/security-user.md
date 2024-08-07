@@ -117,7 +117,7 @@ This lab assumes you have:
     <copy>SELECT * FROM employees;</copy>
     ```
 
-2. Switch to the administrative connection revoke ‘USAGE’ privilege using and administrative connection and verify (tip: this privilege can’t be revoked…)
+2. Switch to the administrative connection revoke ‘USAGE’ privilege using and administrative connection and verify (tip: this privilege can’t be revoked…  this command doesn't actually change any privileges because USAGE doesn't grant any permissions)
 
     **![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>**
 
