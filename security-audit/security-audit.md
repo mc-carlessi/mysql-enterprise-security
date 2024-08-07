@@ -41,15 +41,34 @@ This lab assumes you have:
 
 2. Enable Audit Log on mysql-enterprise (remember: you can’t install on mysql-gpl).  Audit is an Enterprise plugin.
 
-     a. Load Audit functions.  If running in a replicated environment, load the plugin no each of the Replicas first and then modify the SQL script to only load the functions.
+    a. Load Audit functions.  If running in a replicated environment, load the plugin no each of the Replicas first and then modify the SQL script to only load the functions.
 
     **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
 
     ```
     <copy>mysql -uadmin -pWelcome1! -h 127.0.0.1 -P 3306 -D mysql < /usr/share/mysql-8.4/audit_log_filter_linux_install.sql</copy>
     ```
+    
+    b. Edit the my.cnf setting in /mysql/etc/my.cnf
 
-    b. Restart MySQL (you can configure audit without restart the server, but here we show how to set the configuration file)
+    **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
+
+    ```
+    <copy>sudo nano /etc/my.cnf</copy>
+    ```
+
+    c. Add the following lines to the bottom of the file.  These lines will make sure that the audit plugin can't be unloaded and that the file is automatically rotated at 20 MB and format of data is JSON.
+
+    **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
+
+    ```
+    <copy>plugin-load=audit_log.so
+    audit_log=FORCE_PLUS_PERMANENT
+    audit_log_rotate_on_size=20971520
+    audit_log_format=JSON</copy>
+    ```
+
+    d. Restart MySQL (you can configure audit without restart the server, but here we show how to set the configuration file)
 
     **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
 
