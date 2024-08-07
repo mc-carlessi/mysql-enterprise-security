@@ -42,7 +42,7 @@ This lab assumes you have:
     <copy>ssh -i ~/.ssh/id_rsa opc@<your_compute_instance_ip></copy>
     ```
 
-    ![CONNECT](./images/06connect01-signin.png " ")
+    ![CONNECT](./images/ssh-login-2.png " ")
 
 
 1. Install the RPM's

@@ -31,7 +31,7 @@ In this lab, you will:
     <copy>ssh -i ~/.ssh/id_rsa opc@<your_compute_instance_ip></copy>
     ```
 
-    ![MDS](./images/ssh-login.png "ssh-login")
+    ![MDS](./images/ssh-login-2.png "ssh-login")
 
 
 
