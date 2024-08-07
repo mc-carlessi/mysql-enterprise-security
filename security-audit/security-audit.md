@@ -62,7 +62,7 @@ This lab assumes you have:
     **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
 
     ```
-    <copy>plugin-load=audit_log.so
+    <copy>
     audit_log=FORCE_PLUS_PERMANENT
     audit_log_rotate_on_size=20971520
     audit_log_format=JSON</copy>
