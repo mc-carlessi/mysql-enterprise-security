@@ -2,6 +2,7 @@
 
 ## Introduction
 
+Create Compute instances for the students to use in class. You can delete them at the end of the workshop.
 Instance pools let you create and manage multiple compute instances within the same region as a group. 
 
 **Create Linux Compute Instance**
