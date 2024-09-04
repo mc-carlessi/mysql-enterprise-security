@@ -21,46 +21,51 @@
             "filename": "../../create-compute/create-compute.md"
         },
         {
-            "title": "Lab 3: Setup Environment",
+            "title": "Lab 3: Create Compute Instance Pool",
+            "description": "Create Compute Instance Pool",
+            "filename": "../../create-pool/create-pool.md"
+        },
+        {
+            "title": "Lab 4: Setup Environment",
             "description": "Setup Environment",
             "filename": "../../setup/setup.md"
         },
         {
-            "title": "Lab 4: Install - MySQL Enterprise Edition",
+            "title": "Lab 5: Install - MySQL Enterprise Edition",
             "description": "Install - MySQL Enterprise Edition",
             "filename": "../../install-ee/install-ee.md"
         },
         {
-            "title": "Lab 5: Verify MySQL Enterprise Edition",
+            "title": "Lab 6: Verify MySQL Enterprise Edition",
             "description": "Verify MySQL Enterprise Edition",
             "filename": "../../verify-ee/verify-ee.md"
         },
         {
-            "title": "Lab 6: Setup LAMP Application ",
+            "title": "Lab 7: Setup LAMP Application ",
             "filename": "../../lamp/lamp.md"
         },
         {
-            "title": "Lab 7: Security - MySQL Users",
+            "title": "Lab 8: Security - MySQL Users",
             "description": "Security - MySQL Users",
             "filename": "../../security-user/security-user.md"
         },
         {
-            "title": "Lab 8: Security - MySQL Enterprise Audit",
+            "title": "Lab 9: Security - MySQL Enterprise Audit",
             "description": "Security - MySQL Enterprise Audit",
             "filename": "../../security-audit/security-audit.md"
         },
         {
-            "title": "Lab 9: Security - MySQL Enterprise Transparent Data Encryption (TDE)",
+            "title": "Lab 10: Security - MySQL Enterprise Transparent Data Encryption (TDE)",
             "description": "Security - MySQL Enterprise Transparent Data Encryption (TDE)",
             "filename": "../../security-tde/security-tde.md"
         },
         {
-            "title": "Lab 10: Security - MySQL Data Masking",
+            "title": "Lab 11: Security - MySQL Data Masking",
             "description": "Security - MySQL Data Masking",
             "filename": "../../security-masking/security-masking.md"
         },
         {
-            "title": "Lab 11: Security - MySQL Firewall",
+            "title": "Lab 12: Security - MySQL Firewall",
             "description": "Security - MySQL Firewall",
             "filename": "../../security-firewall/security-firewall.md"
         },
