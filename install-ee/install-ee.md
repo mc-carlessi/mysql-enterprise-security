@@ -45,12 +45,31 @@ This lab assumes you have:
     ![CONNECT](./images/ssh-login-2.png " ")
 
 
-1. Install the RPM's
+1. In security perspective, install only the software that is required. For this reason create a directory called not_today and move there the rpms that we don't need
 
- **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>** 
-    ```
-    <copy>cd /workshop</copy>
-    ```
+  - Let's create the new directory  
+  **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**  
+      ```
+      <copy>cd /workshop</copy>
+      ```
+  **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**  
+      ```
+      <copy>mkdir not_today</copy>
+      ```
+
+  - Move the devel package that contains development header files and libraries for MySQL database client applications  
+  **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**  
+      ```
+      <copy>mv mysql-commercial-devel* not_today/</copy>
+      ```
+
+  - Move the MySQL Router package, because is usually not installed in the mysql servers, but in the application servers  
+  **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**  
+      ```
+      <copy>mv mysql-router-commercial* not_today/</copy>
+      ```
+
+2. Now install the RPM's.
 
  **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>** 
     ```

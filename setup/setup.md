@@ -43,6 +43,15 @@ In this lab, you will:
     <copy>sudo mkdir /workshop </copy>
     ```
 
+3. Assign ownership to opc user
+
+    **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
+
+    ```
+    <copy>sudo chown opc. /workshop </copy>
+    ```
+
+
 3. Download workshop files
 
     **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
@@ -54,7 +63,7 @@ In this lab, you will:
     **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
 
     ```
-    <copy>sudo wget https://objectstorage.us-ashburn-1.oraclecloud.com/p/gXmOYNBcgAWQeWnYuftAXwB7Jd1Iqgr2oTuPZLl2Ekn53iwgap8r60qsK2NGq0Qz/n/idazzjlcjqzj/b/bucket-20240214-SecurityWorkshop03142024/o/Workshop84.tar</copy>
+    <copy>wget https://objectstorage.us-ashburn-1.oraclecloud.com/p/gXmOYNBcgAWQeWnYuftAXwB7Jd1Iqgr2oTuPZLl2Ekn53iwgap8r60qsK2NGq0Qz/n/idazzjlcjqzj/b/bucket-20240214-SecurityWorkshop03142024/o/Workshop84.tar</copy>
     ```
 
 4. Extract workshop files
@@ -62,7 +71,7 @@ In this lab, you will:
     **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
 
     ```
-    <copy>sudo tar xvf Workshop84.tar </copy>
+    <copy>tar xvf Workshop84.tar </copy>
     ```
 
 You may now **proceed to the next lab**
