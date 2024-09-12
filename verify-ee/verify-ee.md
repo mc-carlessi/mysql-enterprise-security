@@ -25,101 +25,108 @@ This lab assumes you have:
 
 - All previous labs successfully completed
 
-- Lab standard  
-    - ![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell> the command must be executed in the Operating System shell
-    - ![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql> the command must be executed in a client like MySQL, MySQL Workbench
-    - ![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh> the command must be executed in MySQL shell
+### Lab standard
+
+Pay attention to the prompt, to know where execute the commands 
+* ![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>  
+  The command must be executed in the Operating System shell
+* ![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>  
+  The command must be executed in a client like MySQL, MySQL Shell or similar tool
+* ![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>  
+  The command must be executed in MySQL shell
 
 ## Task 1: MySQL Connection
 
-Please note that now you have an instance on the server on port 3306. To connect to MySQL, always use the IP address, otherwise you may connect to wrong instance. Here we practice connecting to the right one (port 3310 is intentionally wrong). 
+Please note that password can be saved in an obfuscated file, to be reused, using the utility mysql_config_editor.  
+This approach let you configure more secure and flexible scripts.
 
-1. Check MySQL port : 
-**![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
+1. Set the login path **local_admin** to be used for easier connections 
+
+ **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
     ```
-    <copy>mysql -u admin -p --protocol=tcp</copy>
+    <copy>mysql_config_editor set --login-path=local_admin --user=admin --host=127.0.0.1 -p</copy>
     ```
 
+2. Test the connection with mysql and mysqlsh clients
+
+ **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
+    ```
+    <copy>mysql --login-path=local_admin</copy>
+    ```
  **![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>** 
-    ```
-    <copy>status</copy>
-    ```
-
- **![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>**  
-
     ```
     <copy>exit</copy>
     ```
-	
-2. Check a different port :
- **![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>**
 
+ **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
     ```
-    <copy>mysql -uadmin -p -h localhost -P3310 --protocol=tcp </copy>
+    <copy>mysqlsh --login-path=local_admin</copy>
+    ```
+ **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>** 
+    ```
+    <copy>\quit</copy>
     ```
 
-    **Note:** Error MySQL is not configured to work with port 3310.
+2. List existing settings, please note that password are obfuscated
+
+ **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
+    ```
+    <copy>mysql_config_editor print --all</copy>
+    ```
 
 ## Task 2: Learn Useful SQL Statements
 
-1. **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
+1. Connect to your instance
+    **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
     ```
-    <copy>mysql -uadmin -pWelcome1! -h 127.0.0.1 -P 3306</copy>
+    <copy>mysqlsh admin@127.0.0.1</copy>
     ```
 
-2. **![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>** 
+2. You can check the values of a specific variable, like the version of your server to know if it's updated to last release or not  
+    **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>** 
     ```
     <copy>SHOW VARIABLES LIKE "%version%";</copy>
     ```
 
-3. **![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>** 
+3. InnoDB provides the best Storage Engine in the general use case. You can check if all thethere are tables in a different format (of course, excluding system schemas)
     ```
-    <copy>SELECT table&#95;name, engine FROM INFORMATION&#95;SCHEMA.TABLES WHERE engine <> 'InnoDB';</copy>
-    ```
-
-4. **![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>** 
-    ```
-    <copy>SELECT table&#95;name, engine FROM INFORMATION&#95;SCHEMA.TABLES WHERE engine = 'InnoDB';</copy>
+    <copy>SELECT table_schema table_name, engine FROM INFORMATION_SCHEMA.TABLES where engine <> 'InnoDB' and table_schema not in ('mysql','information_schema', 'sys', 'performance_schema', 'mysql_innodb_cluster_metadata');</copy>
     ```
 
-5. **![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>** 
+4. You can check the amount of data inside all the databases  
     ```
-    <copy>SELECT table&#95;name, engine FROM INFORMATION&#95;SCHEMA.TABLES where engine = 'InnoDB' and table&#95;schema not in ('mysql','information&#95;schema', 'sys');</copy>
-    ```
-
-6. **![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>**
-    ```
-    <copy>SELECT ENGINE, COUNT(*), SUM(DATA&#95;LENGTH)/ 1024 / 1024 AS 'Data MB', SUM(INDEX&#95;LENGTH)/1024 / 1024 AS 'Index MB' FROM information&#95;schema.TABLEs group by engine;</copy>
+    <copy>SELECT table_schema AS 'Schema', SUM( data_length ) / 1024 / 1024 AS 'Data MB', SUM( index_length ) / 1024 / 1024 AS 'Index MB', SUM( data_length + index_length ) / 1024 / 1024 AS 'Sum' FROM information_schema.tables GROUP BY table_schema ;</copy>
     ```
 
-7. **![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>**
+4. You can check the amount of data inside all tables in a specific database ('employees' in the example)  
     ```
-    <copy>SELECT table&#95;schema AS 'Schema', SUM( data&#95;length ) / 1024 / 1024 AS 'Data MB', SUM( index&#95;length ) / 1024 / 1024 AS 'Index MB', SUM( data&#95;length + index&#95;length ) / 1024 / 1024 AS 'Sum' FROM information&#95;schema.tables GROUP BY table&#95;schema ;</copy>
-    ```
-
-8. The “\G” is like “;” with a different way to show results 
-  **![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>** 
-    ```
-    <copy>SHOW GLOBAL VARIABLES\G</copy>
+    <copy>SELECT table_schema AS 'Schema', table_name, SUM( data_length ) / 1024 / 1024 AS 'Data MB', SUM( index_length ) / 1024 / 1024 AS 'Index MB', SUM( data_length + index_length ) / 1024 / 1024 AS 'Sum' FROM information_schema.tables WHERE table_schema='employees' GROUP BY table_name;</copy>
     ```
 
-  **![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>**
+5. You can check the size of tablespaces files for a specific database ('employees' in the example)  
     ```
-    <copy>SHOW GLOBAL STATUS\G</copy>
+    <copy>SELECT name, space AS 'tablespace id', allocated_size /1024 /1024 AS 'size (MB)', encryption FROM innodb_tablespaces WHERE name LIKE 'employees/%';</copy>
     ```
 
-  **![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>**
+8. The “\G” is like “;” with a different way to show results
+
+  **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>** 
+    ```
+    <copy>SHOW GLOBAL VARIABLES LIKE 'version%';</copy>
+    ```
+    ```
+    <copy>SHOW GLOBAL VARIABLES LIKE 'version%'\G</copy>
+    ```
+
+9. Show connections
+  **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>**
     ```
     <copy>SHOW FULL PROCESSLIST;</copy>
     ```
 
-  **![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>**
+9. You can now exit
     ```
-    <copy>SHOW ENGINE INNODB STATUS\G</copy>
-    ```
-
-    ```
-    <copy>exit</copy>
+    <copy>\q</copy>
     ```
 
 ## Learn More

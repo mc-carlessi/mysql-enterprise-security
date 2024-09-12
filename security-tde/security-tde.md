@@ -13,7 +13,7 @@ Estimated Lab Time: 20 minutes
 
 In this lab, you will:
 
-* Setup the  manifest file and configation file needed to use TDE
+* Setup TDE using file encryption component
 * Practice using TDE
 
 ### Prerequisites (Optional)
@@ -22,10 +22,15 @@ This lab assumes you have:
 
 * All previous labs successfully completed
 
-* Lab standard  
-  * ![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell> the command must be executed in the Operating System shell
-  * ![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql> the command must be executed in a client like MySQL, MySQL Workbench
-  * ![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh> the command must be executed in MySQL shell
+### Lab standard
+
+Pay attention to the prompt, to know where execute the commands 
+* ![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>  
+  The command must be executed in the Operating System shell
+* ![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>  
+  The command must be executed in a client like MySQL, MySQL Shell or similar tool
+* ![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>  
+  The command must be executed in MySQL shell
 
 **Notes:**
     - [InnoDB Data At Rest](https://dev.mysql.com/doc/en/innodb-data-encryption.html)
@@ -102,28 +107,28 @@ This lab assumes you have:
     a.  **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
 
     ```
-    <copy>mysql -u admin -pWelcome1! -P3306 -h127.0.0.1 </copy>
+    <copy>mysqlsh admin@127.0.0.1</copy>
     ```
 
-    b. Verify the component is loaded and active: **![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>**
+    b. Verify the component is loaded and active: **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>**
 
     ```
     <copy>SELECT * FROM performance_schema.keyring_component_status;</copy>
     ```
 
-    c. **![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>**
+    c. **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>**
 
     ```
     <copy>USE employees;</copy>
     ```
 
-    d. **![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>**
+    d. **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>**
 
     ```
     <copy>ALTER TABLE employees ENCRYPTION = 'Y';</copy>
     ```
 
-3. "Spy" on employees.employees table again:
+3. From a second session, "spy" on employees.employees table again:
 
     **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
 
@@ -134,35 +139,35 @@ This lab assumes you have:
 4. Administrative commands
 
     a. Get details on encrypted key file:
-    **![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>**
+    **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>**
 
     ```
     <copy>SHOW VARIABLES LIKE 'keyring_encrypted_file_data'\G</copy>
     ```
 
     b. Set default for all tables to be encrypted when creating them:
-    **![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>**
+    **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>**
 
     ```
     <copy>SET GLOBAL default_table_encryption=ON;</copy>
     ```
 
     c. Peek on the mysql System Tables:
-    **![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>**
+    **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>**
 
     ```
     <copy>sudo strings "/var/lib/mysql/mysql.ibd" | head -n70</copy>
     ```
 
     d. Encrypt the mysql System Tables:
-    **![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>**
+    **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>**
 
     ```
     <copy>ALTER TABLESPACE mysql ENCRYPTION = 'Y';</copy>
     ```
 
     e. Show all the encrypted tables:
-    **![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>**
+    **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>**
 
     ```
     <copy>SELECT SPACE, NAME, SPACE_TYPE, ENCRYPTION FROM INFORMATION_SCHEMA.INNODB_TABLESPACES WHERE ENCRYPTION='Y'\G</copy>

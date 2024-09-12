@@ -22,8 +22,9 @@ In this lab, you will be guided through the following tasks:
 
 ## Task 1: Install App Server (APACHE)
 
-1. Open OCI Cloud Consloe. If not already connected with SSH, on Command Line, connect to the Compute instance using SSH ... be sure replace the  "private key file"  and the "new compute instance ip"
+1. Open OCI Cloud Console. If not already connected with SSH, on Command Line, connect to the Compute instance using SSH ... be sure replace the  "private key file"  and the "new compute instance ip"
 
+    **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
      ```bash
     <copy>ssh -i ~/.ssh/id_rsa opc@<your_compute_instance_ip></copy>
      ```
@@ -32,35 +33,40 @@ In this lab, you will be guided through the following tasks:
 
     a. Install Apache
 
+    **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
     ```bash
     <copy>sudo yum install httpd -y </copy>
     ```
 
     b. Enable Apache
 
+    **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
     ```bash
     <copy>sudo systemctl enable httpd</copy>
     ```
 
     c. Start Apache
 
+    **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
     ```bash
     <copy>sudo systemctl restart httpd</copy>
     ```
 
-    d. Setup firewall
+    d. Setup firewall to allow HTTP connections
 
+    **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
     ```bash
     <copy>sudo firewall-cmd --permanent --add-port=80/tcp</copy>
     ```
 
-    e. Reload firewall
+    e. Reload firewall to activate the new rules
 
+    **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
     ```bash
     <copy>sudo firewall-cmd --reload</copy>
     ```
 
-3. From a browser test apache from your loacal machine using the Public IP Address of your Compute Instance
+3. From a browser test apache from your local machine using the Public IP Address of your Compute Instance
 
     **Example: http://129.213....**
 
@@ -70,42 +76,49 @@ In this lab, you will be guided through the following tasks:
 
     a. Install php:7.4
 
+    **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
     ```bash
     <copy> sudo dnf module install php:7.4 -y</copy>
     ```
 
-    b. Install associated php libraries
+    b. Install php libraries required by our application
 
+    **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
     ```bash
     <copy>sudo yum install php-cli php-mysqlnd php-zip php-gd php-mbstring php-xml php-json -y</copy>
     ```
 
-    c. View  php / mysql libraries
+    c. View installed php libraries for mysql
 
+    **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
     ```bash
     <copy>php -m |grep mysql</copy>
     ```
 
     d. View php version
 
+    **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
     ```bash
     <copy>php -v</copy>
     ```
 
     e. Restart Apache
 
+    **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
     ```bash
     <copy>sudo systemctl restart httpd</copy>
     ```
 
 2. Create test php file (info.php)
 
+    **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
     ```bash
     <copy>sudo nano /var/www/html/info.php</copy>
     ```
 
 3. Add the following code to the editor and save the file (ctr + o) (ctl + x)
 
+    **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
     ```bash
     <copy><?php
     phpinfo();
@@ -118,24 +131,28 @@ In this lab, you will be guided through the following tasks:
 
 ## Task 3: Create MySQL PHP connect app
 
-1. Security update"   set SELinux to allow Apache to connect to MySQL
+1. Set SELinux to allow Apache to connect to MySQL
 
+    **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
     ```bash
     <copy> sudo setsebool -P httpd_can_network_connect 1 </copy>
     ```
 
 2. Create config.php
 
+    **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
     ```bash
     <copy>cd /var/www/html</copy>
     ```
 
+    **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
     ```bash
     <copy>sudo nano config.php</copy>
     ```
 
-3. Add the following code to the editor. Update DB_SERVER with the MySQL DB IP abddress, update the username and password then save the file (ctr + o) (ctl + x)
+3. Add the following code to the editor. If needed, please update DB_SERVER with the MySQL DB IP address, the username and password then save the file (ctr + o) (ctl + x)
 
+    **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
      ```bash
         <copy><?php
     // Database credentials
@@ -160,16 +177,19 @@ In this lab, you will be guided through the following tasks:
 
 4. Create dbtest.php
 
+    **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
     ```bash
     <copy>cd /var/www/html</copy>
     ```
 
+    **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
     ```bash
     <copy>sudo nano dbtest.php</copy>
     ```
 
 5. Add the following code to the editor and save the file (ctr + o) (ctl + x)
 
+    **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
     ```bash
     <copy>
     <?php
@@ -201,28 +221,33 @@ In this lab, you will be guided through the following tasks:
 
 1. Go to the development folder
 
+    **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
     ```bash
     <copy>cd /var/www/html</copy>
     ```
 
 2. Download application code
 
+    **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
     ```bash
     <copy> sudo wget https://objectstorage.us-ashburn-1.oraclecloud.com/p/4joJKyI1NFAXNImd1V-zAV0kOb7pIauzy8QKjMK4BbpBTcYVfkxoAH7HB3P0brMK/n/idazzjlcjqzj/b/mysql_security/o/emp_apps.zip</copy>
     ```
 
 3. unzip Application code
 
+    **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
     ```bash
     <copy>sudo unzip emp_apps.zip</copy>
     ```
 
+    **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
     ```bash
     <copy>cd emp_apps</copy>
     ```
 
 4. Replace the DB_USERNAME to **admin** in config.php file and save the file.
 
+    **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
     ```bash
     <copy>sudo nano config.php</copy>
     ```
