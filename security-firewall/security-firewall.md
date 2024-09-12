@@ -19,41 +19,45 @@ This lab assumes you have:
 * An Oracle account
 * All previous labs successfully completed
 
-* Lab standard  
-    - ![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell> the command must be executed in the Operating System shell
-    - ![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql> the command must be executed in a client like MySQL, MySQL Workbench
-    - ![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh> the command must be executed in MySQL shell
+### Lab standard
+
+Pay attention to the prompt, to know where execute the commands 
+* ![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>  
+  The command must be executed in the Operating System shell
+* ![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>  
+  The command must be executed in a client like MySQL, MySQL Shell or similar tool
+* ![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>  
+  The command must be executed in MySQL shell
     
 
 **Notes:**
 - The detailed documentation for MySQL Enterprise Firewall is located here:
 - https://dev.mysql.com/doc/en/firewall.html
 
-## Task 1: Account Profiles
+## Task 1: Install Firewall
 
-1. Install MySQL Enterprise Firewall on mysql-advanced using CLI
+1. Install MySQL Enterprise Firewall on mysql-advanced using CLI  
     ```
-    <span style="color:green">shell-mysql></span><copy>mysql -uroot -pWelcome1! -D mysql -e"source /usr/share/mysql-8.4/linux_install_firewall.sql"</copy>
-    ```
-
-2. Connect to the instance with administrative account <span style="color:red">first SSH connection - administrative</span>
-    ```
-    <span style="color:green">shell-mysql></span><copy>mysql -uroot -pWelcome1!</copy>
+    <span style="color:green">shell-mysql></span><copy>mysqlsh admin@127.0.0.1 --mysql -D mysql < /usr/share/mysql-8.4/linux_install_firewall.sql</copy>
     ```
 
-3. <span style="color:red">Administrative account</span> be sure it has the proper permissions to manage Firewall properties
+2. Connect to the instance with administrative account <span style="color:red">first SSH connection - administrative</span>  
     ```
-    <span style="color:blue">mysql></span><copy>GRANT FIREWALL_ADMIN ON *.* TO 'root'@'localhost';</copy>
+    <span style="color:green">shell-mysql></span><copy>mysqlsh admin@127.0.0.1</copy>
     ```
+
+3. <span style="color:red">Administrative account</span> be sure it has the proper permissions to manage Firewall properties  
+
+    ```
+    <span style="color:blue">mysql></span><copy>GRANT FIREWALL_ADMIN, FIREWALL_EXEMPT ON *.* TO 'admin'@'%';</copy>
+    ```
+
     ```
     <span style="color:blue">mysql></span><copy>SHOW GLOBAL VARIABLES LIKE 'mysql_firewall_mode';</copy>
     ```
-    ```
-    <span style="color:blue">mysql></span><copy>SHOW GLOBAL STATUS LIKE "firewall%";</copy>
-    ```
 
     ```
-    <span style="color:blue">mysql></span><copy>SET PERSIST mysql_firewall_mode = ON;</copy>
+    <span style="color:blue">mysql></span><copy>SHOW GLOBAL STATUS LIKE "firewall%";</copy>
     ```
 
 ## Task 2: Setup Firewall User and Rules
@@ -98,15 +102,16 @@ This lab assumes you have:
 
 ## Task 3: Run queries to test Firewall characteristics.
 
-1. <span style="color:red">Member1 Connection</span> on a separate terminal.
+1. Open a connection with <span style="color:red">cember1</span> account in a separate terminal.
 
     **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>** 
     ```
-    <span style="color:green">shell-mysql></span><copy>mysql -umember1 -pWelcome1!</copy>
+    <span style="color:green">shell-mysql></span><copy>mysqlsh member1@127.0.0.1</copy>
     ```
 
 2. Run some sample queries that are acceptable
 
+    **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>** 
     ```
     <span style="color:blue">mysql></span><copy>USE employees;SELECT emp_no, title, from_date, to_date FROM titles WHERE emp_no = 10001; </copy>
     ```
@@ -125,35 +130,35 @@ This lab assumes you have:
 
     a. **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>** 
     ```
-    <span style="color:green">shell-mysql></span><copy>mysql -uroot -pWelcome1!</copy>
+    <span style="color:green">shell-mysql></span><copy>mysql admin@127.0.0.1</copy>
     ```
 
-    b. **![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>** 
+    b. **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>** 
     ```
     <span style="color:blue">mysql></span><copy>SELECT MODE FROM performance_schema.firewall_groups WHERE NAME = 'fwgrp';</copy>
     ```
 
-    c. **![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>** 
+    c. **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>** 
     ```
     <span style="color:blue">mysql></span><copy>SELECT * FROM performance_schema.firewall_membership WHERE GROUP_ID = 'fwgrp' ORDER BY MEMBER_ID;</copy>
     ```
 
-    d. **![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>** 
+    d. **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>** 
     ```
-    <span style="color:blue">mysql></span><copy>SELECT RULE FROM performance_schema.firewall_group_allowlist WHERE NAME = 'fwgrp';</copy>
+    <span style="color:blue">mysql></span><copy>SELECT RULE FROM performance_schema.firewall_group_allowlist WHERE NAME = 'fwgrp'\G</copy>
     ```
 
-    e. **![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>** 
+    e. **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>** 
     ```
     <span style="color:blue">mysql></span><copy>SHOW GLOBAL STATUS LIKE '%firewall%';</copy>
     ```
 
-    f. **![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>** 
+    f. **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>** 
     ```
     <span style="color:blue">mysql></span><copy>CALL mysql.sp_set_firewall_group_mode('fwgrp', 'PROTECTING');</copy>
     ```
 
-    g. **![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>** 
+    g. **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>** 
     ```
     <span style="color:blue">mysql></span><copy>CALL mysql.sp_firewall_group_enlist('fwgrp', 'member2@localhost');
 CALL mysql.sp_firewall_group_enlist('fwgrp', 'member3@localhost');
@@ -166,70 +171,85 @@ CALL mysql.sp_firewall_group_enlist('fwgrp', 'member4@localhost');</copy>
 
     **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>** 
     ```
-    <span style="color:green">shell-mysql></span><copy>mysql -umember1 -pWelcome1!</copy>
+    <span style="color:green">shell-mysql></span><copy>mysqlsh member1@127.0.0.1</copy>
     ```
 
 2. Run some sample queries to test firewall
 
-    a. **![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>**  
+    a. **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>**  
     ```
     <span style="color:blue">mysql></span><copy>USE employees;SELECT emp_no, title, from_date, to_date FROM titles WHERE emp_no = 10011; </copy>
     ```
 
-    b. **![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>** 
+    b. **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>** 
     ```
     <span style="color:blue">mysql></span><copy>SELECT emp_no, title, from_date, to_date FROM titles WHERE emp_no = 10011 OR TRUE; </copy>
     ```
 
-    c. **![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>** 
+    c. **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>** 
     ```
     <span style="color:blue">mysql></span><copy>SHOW TABLES LIKE '%salaries%';</copy>
     ```
 
-    d. **![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>** 
+## Task 6: test Firewall in detecting mode
+
+1. <span style="color:red">Administrative Account</span> Login on a separate terminal as admin.
+
+    a. If not already connected login as administrative account
+    **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>** 
     ```
-    <span style="color:blue">mysql></span><copy>TRUNCATE TABLE mysql.slow_log;</copy>
+    <span style="color:green">shell-mysql></span><copy>mysqlsh admin@127.0.0.1</copy>
     ```
 
-3. <span style="color:red">Administrative Account</span> Login on a separate terminal as admin.
-
-    a. **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>** 
+    b. Increase error log verbosity
+    **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>**  
     ```
-    <span style="color:green">shell-mysql></span><copy>mysql -uroot -pWelcome1!</copy>
+    <span style="color:blue">mysql></span><copy>SET PERSIST log_error_verbosity=3;</copy>
     ```
 
-    b. **![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>**  
+    b. Set firewall in detecting mode
+    **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>**  
     ```
     <span style="color:blue">mysql></span><copy>CALL mysql.sp_set_firewall_group_mode('fwgrp', 'DETECTING');</copy>
     ```
 
-    c. **![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>**  
+
+    c. Check firewall status
+    **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>**  
     ```
     <span style="color:blue">mysql></span><copy>SHOW GLOBAL STATUS LIKE '%firewall%';</copy>
     ```
 
-4. <span style="color:red">Member1 Connection</span> Login on a separate terminal as member1.
+4. <span style="color:red">Member1 Connection</span> Login on a separate terminal as member1 and execute a query that violates firewall rules
 
     a. **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>** 
     ```
-    <span style="color:green">shell-mysql></span><copy>mysql -umember1 -pWelcome1!</copy>
+    <span style="color:green">shell-mysql></span><copy>mysql member1@127.0.0.1</copy>
     ```
 
-    b. **![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>** 
+    b. **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>** 
     ```
-    <span style="color:blue">mysql></span><copy>USE employees; SELECT emp_no, title, from_date, to_date FROM titles WHERE emp_no = 10011 OR TRUE; </copy>
+    <span style="color:blue">mysql></span><copy>USE employees; SELECT emp_no, title, from_date, to_date FROM titles WHERE emp_no = 10011 OR TRUE LIMIT 10; </copy>
     ```
 
 5. <span style="color:red">Administration Connection</span> Login on a separate terminal as Adminstrator.
 
-    a. **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>** 
+    a. Login as admin
+    **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>** 
     ```
-    <span style="color:green">shell-mysql></span><copy>mysql -uroot -pWelcome1!</copy>
+    <span style="color:green">shell-mysql></span><copy>mysqlsh admin@127.0.0.1</copy>
     ```
-    c. **![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>**  
+    b. Chekc firewall status
+    **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>**  
     ```
     <span style="color:blue">mysql></span><copy>SHOW GLOBAL STATUS LIKE '%firewall%';</copy>
     ```
+    c. Check error log content
+    **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>**  
+    ```
+    <span style="color:blue">mysql></span><copy>SELECT * FROM performance_schema.error_log WHERE ERROR_CODE='MY-011191'\G</copy>
+    ```
+
 
 You may now **proceed to the next lab**
 
