@@ -70,7 +70,7 @@ Pay attention to the prompt, to know where execute the commands
   - Move the MySQL Router package, because is usually not installed in the mysql servers, but in the application servers  
   **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**  
       ```
-      <copy>mv mysql-router-commercial* not_today/</copy>
+      <copy>mv mysql-router-commercial* not_needed/</copy>
       ```
 
 3. You can see that the only packages are server and clients.
