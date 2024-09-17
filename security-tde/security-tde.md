@@ -139,6 +139,7 @@ Pay attention to the prompt, to know where execute the commands
 4. Administrative commands
 
     a. Get details on encrypted key file:
+
     **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>**
 
     ```
@@ -146,6 +147,7 @@ Pay attention to the prompt, to know where execute the commands
     ```
 
     b. Set default for all tables to be encrypted when creating them:
+    
     **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>**
 
     ```
@@ -153,6 +155,7 @@ Pay attention to the prompt, to know where execute the commands
     ```
 
     c. Peek on the mysql System Tables:
+
     **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>**
 
     ```
@@ -160,6 +163,7 @@ Pay attention to the prompt, to know where execute the commands
     ```
 
     d. Encrypt the mysql System Tables:
+
     **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>**
 
     ```
@@ -167,6 +171,7 @@ Pay attention to the prompt, to know where execute the commands
     ```
 
     e. Show all the encrypted tables:
+
     **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>**
 
     ```
@@ -174,6 +179,7 @@ Pay attention to the prompt, to know where execute the commands
     ```
 
 5. Validate encryption of the mysql System Tables:
+
     **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
 
     ```

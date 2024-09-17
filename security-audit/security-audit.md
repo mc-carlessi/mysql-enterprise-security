@@ -248,42 +248,42 @@ Pay attention to the prompt, to know where execute the commands
     ```
 
    a. Check existing filters:
+
    **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>**
     ```
     <copy>SELECT * FROM mysql.audit_log_filter\G</copy>
     ```
 
    b. Check Users being Audited:
+
    **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>**
     ```
     <copy>SELECT * FROM mysql.audit_log_user\G</copy>
     ```
 
-   c. Reading from Audit Log within MySQL Client
+   c. Show filter in human readable format
+
    **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>**
     ```
-    <copy>SELECT JSON_PRETTY(CONVERT(audit_log_read(audit_log_read_bookmark()) using utf8mb4))\G</copy>
+    <copy>SELECT JSON_PRETTY(FILTER) as filter FROM mysql.audit_log_filter\G</copy>
     ```
 
    d. Global Audit log disable
+
    **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>**
     ```
     <copy>SET GLOBAL audit_log_disable = true;</copy>
     ```
 
-   e. Check what Audit Functions are available
-   **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>**
-    ```
-    <copy>SELECT * FROM  mysql.func WHERE name like 'audit%';</copy>
-    ```
+   e. Check that the Audit plugin loaded
 
-   f. Check that the Audit plugin loaded
    **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>**
     ```
     <copy>SELECT PLUGIN_NAME, PLUGIN_STATUS FROM INFORMATION_SCHEMA.PLUGINS WHERE PLUGIN_NAME LIKE 'audit%';</copy>
     ```
 
    e. Close MySQL Shell connection to be ready for next lab
+   
    **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>**
     ```
     <copy>\exit</copy>

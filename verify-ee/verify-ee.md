@@ -77,6 +77,7 @@ This approach let you configure more secure and flexible scripts.
 ## Task 2: Learn Useful SQL Statements
 
 1. Connect to your instance
+
     **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
     ```
     <copy>mysqlsh admin@127.0.0.1</copy>
@@ -98,17 +99,17 @@ This approach let you configure more secure and flexible scripts.
     <copy>SELECT table_schema AS 'Schema', SUM( data_length ) / 1024 / 1024 AS 'Data MB', SUM( index_length ) / 1024 / 1024 AS 'Index MB', SUM( data_length + index_length ) / 1024 / 1024 AS 'Sum' FROM information_schema.tables GROUP BY table_schema ;</copy>
     ```
 
-4. You can check the amount of data inside all tables in a specific database ('employees' in the example)  
+5. You can check the amount of data inside all tables in a specific database ('employees' in the example)  
     ```
     <copy>SELECT table_schema AS 'Schema', table_name, SUM( data_length ) / 1024 / 1024 AS 'Data MB', SUM( index_length ) / 1024 / 1024 AS 'Index MB', SUM( data_length + index_length ) / 1024 / 1024 AS 'Sum' FROM information_schema.tables WHERE table_schema='employees' GROUP BY table_name;</copy>
     ```
 
-5. You can check the size of tablespaces files for a specific database ('employees' in the example)  
+6. You can check the size of tablespaces files for a specific database ('employees' in the example)  
     ```
     <copy>SELECT name, space AS 'tablespace id', allocated_size /1024 /1024 AS 'size (MB)', encryption FROM innodb_tablespaces WHERE name LIKE 'employees/%';</copy>
     ```
 
-8. The “\G” is like “;” with a different way to show results
+7. The “\G” is like “;” with a different way to show results
 
   **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>** 
     ```
@@ -118,7 +119,8 @@ This approach let you configure more secure and flexible scripts.
     <copy>SHOW GLOBAL VARIABLES LIKE 'version%'\G</copy>
     ```
 
-9. Show connections
+8. Show connections
+
   **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>**
     ```
     <copy>SHOW FULL PROCESSLIST;</copy>

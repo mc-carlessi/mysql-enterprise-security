@@ -167,7 +167,7 @@ Pay attention to the prompt, to know where execute the commands
 
     **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>**  
     ```
-    <copy>CREATE USER 'accounting'@'%' IDENTIFIED BY 'Welcome1!';</copy>
+    <copy>CREATE USER 'accounting'@'%' IDENTIFIED BY 'Pa33word!';</copy>
     ```
 
     ```

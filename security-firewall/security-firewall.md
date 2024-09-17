@@ -73,25 +73,17 @@ Pay attention to the prompt, to know where execute the commands
     <span style="color:blue">mysql></span><copy>GRANT ALL ON employees.* TO 'member1'@'localhost';</copy>
     ```
 
-3. Inspect environment
-    ```
-    <span style="color:blue">mysql></span><copy>SELECT MODE FROM performance_schema.firewall_groups WHERE NAME = 'fwgrp';</copy>
-    ```
-    ```
-    <span style="color:blue">mysql></span><copy>SELECT RULE FROM performance_schema.firewall_group_allowlist WHERE NAME = 'fwgrp';</copy>
-    ```
-
-4. Create Group Profile and turn on Recording of SQL commands and then test Firewall
+3. Create Group Profile name 'fwgrp' and turn on Recording of SQL commands
     ```
     <span style="color:blue">mysql></span><copy>CALL mysql.sp_set_firewall_group_mode('fwgrp', 'RECORDING');</copy>
     ```
 
-5. Add member1 to Firewall Group
+4. Add member1 to Firewall Group just created
     ```
     <span style="color:blue">mysql></span><copy>CALL mysql.sp_firewall_group_enlist('fwgrp', 'member1@localhost');</copy>
     ```
 
-6. Check environment
+5. Check environment
 
     ```
     <span style="color:blue">mysql></span><copy>SELECT MODE FROM performance_schema.firewall_groups WHERE NAME = 'fwgrp';</copy>
@@ -102,7 +94,7 @@ Pay attention to the prompt, to know where execute the commands
 
 ## Task 3: Run queries to test Firewall characteristics.
 
-1. Open a connection with <span style="color:red">cember1</span> account in a separate terminal.
+1. Open a connection with <span style="color:red">member1</span> account in a separate terminal.
 
     **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>** 
     ```
@@ -128,41 +120,46 @@ Pay attention to the prompt, to know where execute the commands
 
 1. <span style="color:red">Administrative account</span> Login on a separate terminal as admin.
 
-    a. **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>** 
+    a. If not already connected, connect as administrative account
+
+    **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>** 
     ```
     <span style="color:green">shell-mysql></span><copy>mysql admin@127.0.0.1</copy>
     ```
 
-    b. **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>** 
+    b. Check firewall mode for the group 'fwgrp'
+
+    **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>** 
     ```
     <span style="color:blue">mysql></span><copy>SELECT MODE FROM performance_schema.firewall_groups WHERE NAME = 'fwgrp';</copy>
     ```
 
-    c. **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>** 
+    c. Check users that are memebrs of 'fwgrp' group
+
+    **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>** 
     ```
     <span style="color:blue">mysql></span><copy>SELECT * FROM performance_schema.firewall_membership WHERE GROUP_ID = 'fwgrp' ORDER BY MEMBER_ID;</copy>
     ```
 
-    d. **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>** 
+    d. Check rules for 'fwgrp' group
+
+    **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>** 
     ```
     <span style="color:blue">mysql></span><copy>SELECT RULE FROM performance_schema.firewall_group_allowlist WHERE NAME = 'fwgrp'\G</copy>
     ```
 
-    e. **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>** 
+    e. Check rules counters
+
+    **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>** 
     ```
     <span style="color:blue">mysql></span><copy>SHOW GLOBAL STATUS LIKE '%firewall%';</copy>
     ```
 
-    f. **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>** 
+    f. Switch to protecting mode
+
+    **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>** 
     ```
     <span style="color:blue">mysql></span><copy>CALL mysql.sp_set_firewall_group_mode('fwgrp', 'PROTECTING');</copy>
-    ```
-
-    g. **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>** 
-    ```
-    <span style="color:blue">mysql></span><copy>CALL mysql.sp_firewall_group_enlist('fwgrp', 'member2@localhost');
-CALL mysql.sp_firewall_group_enlist('fwgrp', 'member3@localhost');
-CALL mysql.sp_firewall_group_enlist('fwgrp', 'member4@localhost');</copy>
     ```
 
 ## Task 5: ReRun queries to test Firewall characteristics.
@@ -196,31 +193,34 @@ CALL mysql.sp_firewall_group_enlist('fwgrp', 'member4@localhost');</copy>
 1. <span style="color:red">Administrative Account</span> Login on a separate terminal as admin.
 
     a. If not already connected login as administrative account
+
     **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>** 
     ```
     <span style="color:green">shell-mysql></span><copy>mysqlsh admin@127.0.0.1</copy>
     ```
 
     b. Increase error log verbosity
+
     **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>**  
     ```
     <span style="color:blue">mysql></span><copy>SET PERSIST log_error_verbosity=3;</copy>
     ```
 
     b. Set firewall in detecting mode
+
     **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>**  
     ```
     <span style="color:blue">mysql></span><copy>CALL mysql.sp_set_firewall_group_mode('fwgrp', 'DETECTING');</copy>
     ```
 
-
     c. Check firewall status
+
     **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>**  
     ```
     <span style="color:blue">mysql></span><copy>SHOW GLOBAL STATUS LIKE '%firewall%';</copy>
     ```
 
-4. <span style="color:red">Member1 Connection</span> Login on a separate terminal as member1 and execute a query that violates firewall rules
+2. <span style="color:red">Member1 Connection</span> Login on a separate terminal as member1 and execute a query that violates firewall rules
 
     a. **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>** 
     ```
@@ -232,19 +232,22 @@ CALL mysql.sp_firewall_group_enlist('fwgrp', 'member4@localhost');</copy>
     <span style="color:blue">mysql></span><copy>USE employees; SELECT emp_no, title, from_date, to_date FROM titles WHERE emp_no = 10011 OR TRUE LIMIT 10; </copy>
     ```
 
-5. <span style="color:red">Administration Connection</span> Login on a separate terminal as Adminstrator.
+3. <span style="color:red">Administration Connection</span> Login on a separate terminal as Adminstrator.
 
     a. Login as admin
+
     **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>** 
     ```
     <span style="color:green">shell-mysql></span><copy>mysqlsh admin@127.0.0.1</copy>
     ```
     b. Chekc firewall status
+
     **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>**  
     ```
     <span style="color:blue">mysql></span><copy>SHOW GLOBAL STATUS LIKE '%firewall%';</copy>
     ```
     c. Check error log content
+
     **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>**  
     ```
     <span style="color:blue">mysql></span><copy>SELECT * FROM performance_schema.error_log WHERE ERROR_CODE='MY-011191'\G</copy>
