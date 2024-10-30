@@ -116,13 +116,13 @@ Pay attention to the prompt, to know where execute the commands
     <copy>SELECT * FROM performance_schema.keyring_component_status;</copy>
     ```
 
-    c. **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>**
+    c. Let's now encrypt the employ
+    ees table 
+    **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>**
 
     ```
     <copy>USE employees;</copy>
     ```
-
-    d. **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>**
 
     ```
     <copy>ALTER TABLE employees ENCRYPTION = 'Y';</copy>
@@ -140,16 +140,15 @@ Pay attention to the prompt, to know where execute the commands
 
     a. Get details on encrypted key file:
 
-    **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>**
+        **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>**
 
-    ```
-    <copy>SHOW VARIABLES LIKE 'keyring_encrypted_file_data'\G</copy>
-    ```
+        ```
+        <copy>SHOW VARIABLES LIKE 'keyring_encrypted_file_data'\G</copy>
+        ```
 
     b. Set default for all tables to be encrypted when creating them:
     
     **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>**
-
     ```
     <copy>SET GLOBAL default_table_encryption=ON;</copy>
     ```
@@ -157,7 +156,6 @@ Pay attention to the prompt, to know where execute the commands
     c. Peek on the mysql System Tables:
 
     **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>**
-
     ```
     <copy>sudo strings "/var/lib/mysql/mysql.ibd" | head -n70</copy>
     ```
@@ -165,7 +163,6 @@ Pay attention to the prompt, to know where execute the commands
     d. Encrypt the mysql System Tables:
 
     **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>**
-
     ```
     <copy>ALTER TABLESPACE mysql ENCRYPTION = 'Y';</copy>
     ```
@@ -173,7 +170,6 @@ Pay attention to the prompt, to know where execute the commands
     e. Show all the encrypted tables:
 
     **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>**
-
     ```
     <copy>SELECT SPACE, NAME, SPACE_TYPE, ENCRYPTION FROM INFORMATION_SCHEMA.INNODB_TABLESPACES WHERE ENCRYPTION='Y'\G</copy>
     ```
