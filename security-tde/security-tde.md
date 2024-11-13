@@ -37,7 +37,25 @@ Pay attention to the prompt, to know where execute the commands
 
 ## Task 1: Setup required files for TDE
 
-1. SSH into server intance and Create the global manifest file
+1. If nopt already connected, SSH into server instance
+
+2. Retrieve mysqld installation directory, where we later create the global manifest file
+
+    **![green-dot](./images/green-square.jpg) shell>**
+
+    ```
+    <copy>whereis mysqld</copy>
+    ```
+
+3. Retrieve the position of components, where we later create the configuration file
+
+    **![green-dot](./images/green-square.jpg) shell>**
+
+    ```
+    <copy>mysqlsh admin@127.0.0.1 --table -e 'SELECT @@plugin_dir'</copy>
+    ```
+
+4. Now we create the global manifest file
 
     **![green-dot](./images/green-square.jpg) shell>**
 
@@ -49,7 +67,7 @@ Pay attention to the prompt, to know where execute the commands
     <copy>sudo nano mysqld.my</copy>
     ```
 
-2. copy the following  content to mysqld.my save and exit
+5. copy the following  content to mysqld.my save and exit
 
     ```
     <copy>
@@ -59,7 +77,7 @@ Pay attention to the prompt, to know where execute the commands
     </copy>
     ```
 
-3. Create the global configuration file
+6. Create the global configuration file
 
     **![green-dot](./images/green-square.jpg) shell>**
 
@@ -71,7 +89,7 @@ Pay attention to the prompt, to know where execute the commands
     <copy>sudo nano component_keyring_encrypted_file.cnf</copy>
     ```
 
-4. copy the following  content to component\_keyring\_encrypted\_file.cnf save and exit
+7. copy the following  content to component\_keyring\_encrypted\_file.cnf save and exit
 
     ```  
     <copy> 
@@ -82,7 +100,7 @@ Pay attention to the prompt, to know where execute the commands
     } </copy>
     ```
 
-5. Restart MySQL
+8. Restart MySQL
 
     **![green-dot](./images/green-square.jpg) shell>**
 
@@ -110,14 +128,16 @@ Pay attention to the prompt, to know where execute the commands
     <copy>mysqlsh admin@127.0.0.1</copy>
     ```
 
-    b. Verify the component is loaded and active: **![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
+    b. Verify the component is loaded and active: 
+    
+    **![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
 
     ```
     <copy>SELECT * FROM performance_schema.keyring_component_status;</copy>
     ```
 
-    c. Let's now encrypt the employ
-    ees table 
+    c. Let's now encrypt the employees table
+
     **![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
 
     ```
@@ -138,36 +158,28 @@ Pay attention to the prompt, to know where execute the commands
 
 4. Administrative commands
 
-    a. Get details on encrypted key file:
-
-        **![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
-
-        ```
-        <copy>SHOW VARIABLES LIKE 'keyring_encrypted_file_data'\G</copy>
-        ```
-
-    b. Set default for all tables to be encrypted when creating them:
+    a. Set default for all tables to be encrypted when creating them:
     
     **![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
     ```
     <copy>SET GLOBAL default_table_encryption=ON;</copy>
     ```
 
-    c. Peek on the mysql System Tables:
+    b. Peek on the mysql System Tables:
 
     **![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
     ```
     <copy>sudo strings "/var/lib/mysql/mysql.ibd" | head -n70</copy>
     ```
 
-    d. Encrypt the mysql System Tables:
+    c. Encrypt the mysql System Tables:
 
     **![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
     ```
     <copy>ALTER TABLESPACE mysql ENCRYPTION = 'Y';</copy>
     ```
 
-    e. Show all the encrypted tables:
+    d. Show all the encrypted tables:
 
     **![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
     ```
