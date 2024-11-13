@@ -25,7 +25,7 @@ This lab assumes you have:
 ### Lab standard
 
 Pay attention to the prompt, to know where execute the commands 
-* ![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>  
+* ![green-dot](./images/green-square.jpg) shell>  
   The command must be executed in the Operating System shell
 * ![blue-dot](./images/blue-square.jpg) mysql>  
   The command must be executed in a client like MySQL, MySQL Shell or similar tool
