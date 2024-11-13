@@ -89,9 +89,9 @@ This approach let you configure more secure and flexible scripts.
     <copy>SHOW VARIABLES LIKE "%version%";</copy>
     ```
 
-3. InnoDB provides the best Storage Engine in the general use case. You can check if all thethere are tables in a different format (of course, excluding system schemas)
+3. InnoDB provides the best Storage Engine in the general use case. You can check if there are non-InnoDB tables (of course, excluding system schemas)
     ```
-    <copy>SELECT table_schema table_name, engine FROM INFORMATION_SCHEMA.TABLES where engine <> 'InnoDB' and table_schema not in ('mysql','information_schema', 'sys', 'performance_schema', 'mysql_innodb_cluster_metadata');</copy>
+    <copy>SELECT table_schema, table_name, engine FROM INFORMATION_SCHEMA.TABLES where engine <> 'InnoDB' and table_schema not in ('mysql','information_schema', 'sys', 'performance_schema', 'mysql_innodb_cluster_metadata');</copy>
     ```
 
 4. You can check the amount of data inside all the databases  
@@ -106,7 +106,7 @@ This approach let you configure more secure and flexible scripts.
 
 6. You can check the size of tablespaces files for a specific database ('employees' in the example)  
     ```
-    <copy>SELECT name, space AS 'tablespace id', allocated_size /1024 /1024 AS 'size (MB)', encryption FROM innodb_tablespaces WHERE name LIKE 'employees/%';</copy>
+    <copy>SELECT name, space AS 'tablespace id', allocated_size /1024 /1024 AS 'size (MB)', encryption FROM information_schema.innodb_tablespaces WHERE name LIKE 'employees/%';</copy>
     ```
 
 7. The “\G” is like “;” with a different way to show results

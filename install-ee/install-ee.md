@@ -51,11 +51,17 @@ Pay attention to the prompt, to know where execute the commands
 
 2. We have the required software available in **/workshop** directory. But in security perspective, it's important to install only the software that is required. For this reason create a directory called not_needed and move there the rpms that we don't need
 
-  - Let's create the new directory  
+  - Let's check the directory content
   **![green-dot](./images/green-square.jpg) shell>**  
       ```
       <copy>cd /workshop</copy>
       ```
+  **![green-dot](./images/green-square.jpg) shell>**  
+      ```
+      <copy>ls -l</copy>
+      ```
+
+  - Let's create the new directory  
   **![green-dot](./images/green-square.jpg) shell>**  
       ```
       <copy>mkdir not_needed</copy>

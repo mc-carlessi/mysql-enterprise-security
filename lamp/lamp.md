@@ -190,11 +190,6 @@ Pay attention to the prompt, to know where execute the commands
 
     **![green-dot](./images/green-square.jpg) shell>**
     ```bash
-    <copy>cd /var/www/html</copy>
-    ```
-
-    **![green-dot](./images/green-square.jpg) shell>**
-    ```bash
     <copy>sudo nano dbtest.php</copy>
     ```
 
