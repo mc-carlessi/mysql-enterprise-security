@@ -133,6 +133,7 @@ Pay attention to the prompt, to know where execute the commands
     http://computeIP/emp_apps/list_employees.php
 
 4. Return to application connections and check which databases are seen
+
     **![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
     ```
     <copy>SHOW DATABASES;</copy>

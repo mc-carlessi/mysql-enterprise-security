@@ -88,7 +88,17 @@ Pay attention to the prompt, to know where execute the commands
     <copy>mysqlsh admin@127.0.0.1</copy>
     ```
 
-    a. Using the <span style="color:red">Administrative Account</span> , create a Audit Filter for all activity and all users. Privileges required are AUDIT_ADMIN and SUPER
+4. Verify that the sudit plugin is now loaded
+
+    **![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
+
+    ```
+    <copy>SHOW PLUGINS;</copy>
+    ```
+
+## Task 2: Use Audit - log all activity and all users
+
+1. Using the <span style="color:red">Administrative Account</span> , create a Audit Filter for all activity and all users. Privileges required are AUDIT_ADMIN and SUPER
 
     **![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
 
@@ -96,40 +106,42 @@ Pay attention to the prompt, to know where execute the commands
     <copy>SELECT audit_log_filter_set_filter('log_all', '{ "filter": { "log": true } }');</copy>
     ```
 
+2. Assign the new filter to all users
+
     **![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
 
     ```
     <copy>SELECT audit_log_filter_set_user('%', 'log_all');</copy>
     ```
 
-    b. **![yellow-dot](./images/yellow-square.jpg) mysqlsh>** 
+3. Return to shell prompt
+
+    **![yellow-dot](./images/yellow-square.jpg) mysqlsh>** 
     ```
     <copy>\exit</copy>
     ```
 
-    c. Monitor the output of the audit.log file:
+4. Monitor the output of the audit.log file:
 
     **![green-dot](./images/green-square.jpg) shell>**
     ```
     <copy>sudo tail -f /var/lib/mysql/audit.log</copy>
     ```
 
-## Task 2: Use Audit - log all activity and all users
-
-1. Run the application as follows (The application should run):
+5. Run the application as follows (The application should run):
 
     <http://computeIP/emp_apps/list_employees.php>
 
-2. Go to the Monitor terminal to view the output of the audit.log file
+6. Go to the Monitor terminal to view the output of the audit.log file
     ![MDS](./images/audit-log.png "audit-log")
 
-3. Connect to a new instance of the server with SSH
+7. Return to second SSH connection, or reopen it if you already closed it
 
     ```
     <copy>ssh -i ~/.ssh/id_rsa opc@<your_compute_instance_ip></copy>
     ```
 
-4. Login to mysql-enterprise with the user <span style="color:red">appuser1 Connection</span>, then submit some commands
+8. Login to mysql-enterprise with the user <span style="color:red">appuser1 Connection</span>, then submit some commands
 
     a. **![green-dot](./images/green-square.jpg) shell>**  
 
@@ -155,7 +167,7 @@ Pay attention to the prompt, to know where execute the commands
     <copy>SELECT emp_no,salary FROM employees.salaries WHERE salary > 90000 LIMIT 10;</copy>
     ```
 
-5. Go to the Monitor terminal to view the output of the audit.log file
+9. Go to the Monitor terminal to view the output of the audit.log file
 
 ## Task 3: Use Audit - only log connections
 
