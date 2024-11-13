@@ -110,7 +110,7 @@ Pay attention to the prompt, to know where execute the commands
     <copy>mysqlsh admin@127.0.0.1</copy>
     ```
 
-    b. Verify the component is loaded and active: **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
+    b. Verify the component is loaded and active: **![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
 
     ```
     <copy>SELECT * FROM performance_schema.keyring_component_status;</copy>
@@ -118,7 +118,7 @@ Pay attention to the prompt, to know where execute the commands
 
     c. Let's now encrypt the employ
     ees table 
-    **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
+    **![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
 
     ```
     <copy>USE employees;</copy>
@@ -140,7 +140,7 @@ Pay attention to the prompt, to know where execute the commands
 
     a. Get details on encrypted key file:
 
-        **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
+        **![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
 
         ```
         <copy>SHOW VARIABLES LIKE 'keyring_encrypted_file_data'\G</copy>
@@ -148,28 +148,28 @@ Pay attention to the prompt, to know where execute the commands
 
     b. Set default for all tables to be encrypted when creating them:
     
-    **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
+    **![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
     ```
     <copy>SET GLOBAL default_table_encryption=ON;</copy>
     ```
 
     c. Peek on the mysql System Tables:
 
-    **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
+    **![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
     ```
     <copy>sudo strings "/var/lib/mysql/mysql.ibd" | head -n70</copy>
     ```
 
     d. Encrypt the mysql System Tables:
 
-    **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
+    **![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
     ```
     <copy>ALTER TABLESPACE mysql ENCRYPTION = 'Y';</copy>
     ```
 
     e. Show all the encrypted tables:
 
-    **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
+    **![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
     ```
     <copy>SELECT SPACE, NAME, SPACE_TYPE, ENCRYPTION FROM INFORMATION_SCHEMA.INNODB_TABLESPACES WHERE ENCRYPTION='Y'\G</copy>
     ```

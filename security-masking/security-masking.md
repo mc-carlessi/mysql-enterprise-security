@@ -27,7 +27,7 @@ Pay attention to the prompt, to know where execute the commands
   The command must be executed in the Operating System shell
 * ![blue-dot](./images/blue-square.jpg) mysql>  
   The command must be executed in a client like MySQL, MySQL Shell or similar tool
-* !![yellow-dot](./images/yellow-square.jpg) mysqlsh>  
+* ![yellow-dot](./images/yellow-square.jpg) mysqlsh>  
   The command must be executed in MySQL shell
     
 
@@ -44,7 +44,7 @@ Pay attention to the prompt, to know where execute the commands
     ```
 
 2. Create the masking_dictionaries table  
-    **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>** 
+    **![yellow-dot](./images/yellow-square.jpg) mysqlsh>** 
     ```
     <copy>CREATE TABLE IF NOT EXISTS
             mysql.masking_dictionaries(
@@ -56,7 +56,7 @@ Pay attention to the prompt, to know where execute the commands
     ```
 
 3. Load and install the masking components  
-    **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>** 
+    **![yellow-dot](./images/yellow-square.jpg) mysqlsh>** 
     ```
     <copy>INSTALL COMPONENT 'file://component_masking';</copy>
     ```
@@ -66,7 +66,7 @@ Pay attention to the prompt, to know where execute the commands
     ```
 
 4. Check if the components are loaded  
-    **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>** 
+    **![yellow-dot](./images/yellow-square.jpg) mysqlsh>** 
     ```
     <copy>SELECT * FROM mysql.component;</copy>
     ```
@@ -75,24 +75,24 @@ Pay attention to the prompt, to know where execute the commands
 
 1. Use data masking functions
 
-    a. **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>** 
+    a. **![yellow-dot](./images/yellow-square.jpg) mysqlsh>** 
     ```
     <copy>SELECT mask_inner(last_name, 2,1) FROM employees.employees limit 10;</copy>
     ```
 
-    b. **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>** 
+    b. **![yellow-dot](./images/yellow-square.jpg) mysqlsh>** 
     ```
     <copy>SELECT mask_outer(last_name, 2,1) FROM employees.employees limit 10;</copy>
     ```
 
 2. Generate numbers between 1 and 200  
-    **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>**  
+    **![yellow-dot](./images/yellow-square.jpg) mysqlsh>**  
     ```
     <copy>SELECT gen_range(1, 200);</copy>
     ```
 
 3. Generate email where name has 4 characters, surname has 5 characters and domain is mynet.com  
-    **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>**  
+    **![yellow-dot](./images/yellow-square.jpg) mysqlsh>**  
     ```
     <copy>SELECT gen_rnd_email(4, 5, 'mynet.com');</copy>
     ```
@@ -102,70 +102,70 @@ Pay attention to the prompt, to know where execute the commands
 
 1. Create Table to generate and add masking data
 
-    **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>** 
+    **![yellow-dot](./images/yellow-square.jpg) mysqlsh>** 
     ```
     <copy>USE employees; CREATE TABLE employees_mask LIKE employees;</copy>
     ```
 
 2. Add data to newly created table
 
-    **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>**  
+    **![yellow-dot](./images/yellow-square.jpg) mysqlsh>**  
     ```
     <copy>INSERT INTO employees_mask SELECT * FROM employees;</copy>
     ```
 
 3. Create new column for SSN's
 
-    **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>**  
+    **![yellow-dot](./images/yellow-square.jpg) mysqlsh>**  
     ```
     <copy>ALTER TABLE employees_mask ADD COLUMN ssn varchar(11);</copy>
     ```
 
 4. Create new column for emails's
 
-    **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>**  
+    **![yellow-dot](./images/yellow-square.jpg) mysqlsh>**  
     ```
     <copy>ALTER TABLE employees_mask ADD COLUMN email varchar(40);</copy>
     ```
 
 5. Use Functions to generate sample SSN data
 
-    **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>**  
+    **![yellow-dot](./images/yellow-square.jpg) mysqlsh>**  
     ```
     <copy>UPDATE employees_mask SET ssn = gen_rnd_ssn() WHERE 1;</copy>
     ```
 
 6. Use Functions to generate sample Email data
 
-    **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>**  
+    **![yellow-dot](./images/yellow-square.jpg) mysqlsh>**  
     ```
     <copy>UPDATE employees_mask SET email = gen_rnd_email() WHERE 1;</copy>
     ```
 
 7. Let's look at the data that we just created
 
-    **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>**  
+    **![yellow-dot](./images/yellow-square.jpg) mysqlsh>**  
     ```
     <copy>SELECT * FROM employees_mask LIMIT 5;</copy>
     ```
 
 8. Let's mask the SSN
 
-    **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>**  
+    **![yellow-dot](./images/yellow-square.jpg) mysqlsh>**  
     ```
     <copy>SELECT emp_no,first_name,last_name,mask_ssn(CONVERT(ssn USING latin1)) AS ssn FROM employees_mask LIMIT 5;</copy>
     ```
 
 9. Let's create a view which only shows the masked data
 
-    **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>**  
+    **![yellow-dot](./images/yellow-square.jpg) mysqlsh>**  
     ```
     <copy>CREATE VIEW masked_customer AS SELECT emp_no,first_name,last_name,mask_ssn(CONVERT(ssn USING latin1)) AS ssn FROM employees_mask;</copy>
     ```
 
 10. Let's create a user who only has access to the view with the masked data
 
-    **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>**  
+    **![yellow-dot](./images/yellow-square.jpg) mysqlsh>**  
     ```
     <copy>CREATE USER 'accounting'@'%' IDENTIFIED BY 'Pa33word!';</copy>
     ```

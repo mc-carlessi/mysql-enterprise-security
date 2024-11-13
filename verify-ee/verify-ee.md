@@ -32,7 +32,7 @@ Pay attention to the prompt, to know where execute the commands
   The command must be executed in the Operating System shell
 * ![blue-dot](./images/blue-square.jpg) mysql>  
   The command must be executed in a client like MySQL, MySQL Shell or similar tool
-* !![yellow-dot](./images/yellow-square.jpg) mysqlsh>  
+* ![yellow-dot](./images/yellow-square.jpg) mysqlsh>  
   The command must be executed in MySQL shell
 
 ## Task 1: MySQL Connection
@@ -62,7 +62,7 @@ This approach let you configure more secure and flexible scripts.
     ```
     <copy>mysqlsh --login-path=local_admin</copy>
     ```
- **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>** 
+ **![yellow-dot](./images/yellow-square.jpg) mysqlsh>** 
     ```
     <copy>\quit</copy>
     ```
@@ -84,7 +84,7 @@ This approach let you configure more secure and flexible scripts.
     ```
 
 2. You can check the values of a specific variable, like the version of your server to know if it's updated to last release or not  
-    **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>** 
+    **![yellow-dot](./images/yellow-square.jpg) mysqlsh>** 
     ```
     <copy>SHOW VARIABLES LIKE "%version%";</copy>
     ```
@@ -111,7 +111,7 @@ This approach let you configure more secure and flexible scripts.
 
 7. The “\G” is like “;” with a different way to show results
 
-  **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>** 
+  **![yellow-dot](./images/yellow-square.jpg) mysqlsh>** 
     ```
     <copy>SHOW GLOBAL VARIABLES LIKE 'version%';</copy>
     ```
@@ -121,7 +121,7 @@ This approach let you configure more secure and flexible scripts.
 
 8. Show connections
 
-  **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
+  **![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
     ```
     <copy>SHOW FULL PROCESSLIST;</copy>
     ```

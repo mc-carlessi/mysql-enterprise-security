@@ -29,7 +29,7 @@ Pay attention to the prompt, to know where execute the commands
   The command must be executed in the Operating System shell
 * ![blue-dot](./images/blue-square.jpg) mysql>  
   The command must be executed in a client like MySQL, MySQL Shell or similar tool
-* !![yellow-dot](./images/yellow-square.jpg) mysqlsh>  
+* ![yellow-dot](./images/yellow-square.jpg) mysqlsh>  
   The command must be executed in MySQL shell
 
 
@@ -50,19 +50,19 @@ Pay attention to the prompt, to know where execute the commands
 
 2. Create a new user and restrict the user to your “Server” IP
 
- a. **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
+ a. **![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
 
     ```
     <copy>CREATE USER 'appuser1'@'127.0.0.1' IDENTIFIED BY 'Welcome1!';</copy>
     ```
 
- b. **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
+ b. **![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
 
     ```
     <copy>GRANT ALL PRIVILEGES ON employees.* TO 'appuser1'@'127.0.0.1';</copy>
     ```
 
- c. **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
+ c. **![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
 
     ```
     <copy>SHOW GRANTS FOR 'appuser1'@'127.0.0.1';</copy>
@@ -103,13 +103,13 @@ Pay attention to the prompt, to know where execute the commands
     <copy>mysqlsh appuser1@127.0.0.1</copy>
     ```
 
-    **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
+    **![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
 
     ```
     <copy>USE employees;</copy>
     ```
 
-    **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
+    **![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
 
     ```
     <copy>SELECT * FROM employees LIMIT 5;</copy>
@@ -117,12 +117,12 @@ Pay attention to the prompt, to know where execute the commands
 
 2. Switch to the administrative connection revoke ‘USAGE’ privilege using and administrative connection and verify (tip: this privilege can’t be revoked…  this command doesn't actually change any privileges because USAGE doesn't grant any permissions)
 
-    **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
+    **![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
 
     ```
     <copy>REVOKE USAGE ON *.* FROM 'appuser1'@'127.0.0.1';</copy>
     ```
-    **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
+    **![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
 
     ```
     <copy>SHOW GRANTS FOR 'appuser1'@'127.0.0.1';</copy>
@@ -133,26 +133,26 @@ Pay attention to the prompt, to know where execute the commands
     http://computeIP/emp_apps/list_employees.php
 
 4. Return to application connections and check which databases are seen
-    **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
+    **![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
     ```
     <copy>SHOW DATABASES;</copy>
     ```
 
 5. Using the administrative connection revoke all privileges using and administrative connection and verify
 
-    **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
+    **![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
     ```
     <copy>REVOKE ALL PRIVILEGES ON *.* FROM 'appuser1'@'127.0.0.1';</copy>
     ```
 
-    **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
+    **![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
 
     ```
     <copy>SHOW GRANTS FOR 'appuser1'@'127.0.0.1';</copy>
     ```
 
 6. Return to application connections and check which databases are seen (please note that employees database is now missing)  
-    **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
+    **![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
     ```
     <copy>SHOW DATABASES;</copy>
     ```
@@ -165,7 +165,7 @@ Pay attention to the prompt, to know where execute the commands
 
 1. Using the administrative connection restore user privileges to reuse it in next 
 
-    **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
+    **![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
 
     ```
     <copy>GRANT ALL PRIVILEGES ON employees.* TO 'appuser1'@'127.0.0.1';</copy>

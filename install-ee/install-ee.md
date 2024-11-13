@@ -34,7 +34,7 @@ Pay attention to the prompt, to know where execute the commands
   The command must be executed in the Operating System shell
 * ![blue-dot](./images/blue-square.jpg) mysql>  
   The command must be executed in a client like MySQL, MySQL Shell or similar tool
-* !![yellow-dot](./images/yellow-square.jpg) mysqlsh>  
+* ![yellow-dot](./images/yellow-square.jpg) mysqlsh>  
   The command must be executed in MySQL shell
   
 ## Task 1: Install MySQL Enterprise Edition using Linux RPM's
@@ -134,12 +134,12 @@ Pay attention to the prompt, to know where execute the commands
 
 6. Create New Password for MySQL Root
 
- **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
+ **![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
     ```
     <copy>ALTER USER 'root'@'localhost' IDENTIFIED BY 'Welcome1!';</copy>
     ```
 
- **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
+ **![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
     ```
     <copy>\status</copy>
     ```
@@ -147,17 +147,17 @@ Pay attention to the prompt, to know where execute the commands
 
 7.	Create a new administrative user called 'admin' with remote access and full privileges
 
- **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
+ **![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
     ```
     <copy>CREATE USER 'admin'@'%' IDENTIFIED BY 'Welcome1!';</copy>
     ```
 
- **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
+ **![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
     ```
     <copy>GRANT ALL PRIVILEGES ON *.* TO 'admin'@'%' WITH GRANT OPTION;</copy>
     ```
 
- **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
+ **![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
     ```
     <copy>\quit</copy>
     ```
@@ -169,21 +169,21 @@ Pay attention to the prompt, to know where execute the commands
   <copy>mysqlsh admin@127.0.0.1</copy>
   ```
 
- **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
+ **![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
     ```
     <copy>\option -l</copy>
     ```
 
- **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
+ **![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
     ```
     <copy>\option --persist history.autoSave true</copy>
     ```
 
- **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
+ **![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
     ```
     <copy>\option history.autoSave</copy>
     ```
- **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
+ **![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
     ```
     <copy>\quit</copy>
     ```

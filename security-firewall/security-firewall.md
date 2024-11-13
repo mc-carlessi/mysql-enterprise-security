@@ -22,11 +22,11 @@ This lab assumes you have:
 ### Lab standard
 
 Pay attention to the prompt, to know where execute the commands 
-* !![green-dot](./images/green-square.jpg) shell>  
+* ![green-dot](./images/green-square.jpg) shell>  
   The command must be executed in the Operating System shell
 * ![blue-dot](./images/blue-square.jpg) mysql>  
   The command must be executed in a client like MySQL, MySQL Shell or similar tool
-* !![yellow-dot](./images/yellow-square.jpg) mysqlsh>  
+* ![yellow-dot](./images/yellow-square.jpg) mysqlsh>  
   The command must be executed in MySQL shell
     
 
@@ -96,14 +96,14 @@ Pay attention to the prompt, to know where execute the commands
 
 1. Open a connection with <span style="color:red">member1</span> account in a separate terminal.
 
-    **!![green-dot](./images/green-square.jpg) shell>** 
+    **![green-dot](./images/green-square.jpg) shell>** 
     ```
     <span style="color:green">shell-mysql></span><copy>mysqlsh member1@127.0.0.1</copy>
     ```
 
 2. Run some sample queries that are acceptable
 
-    **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>** 
+    **![yellow-dot](./images/yellow-square.jpg) mysqlsh>** 
     ```
     <span style="color:blue">mysql></span><copy>USE employees;SELECT emp_no, title, from_date, to_date FROM titles WHERE emp_no = 10001; </copy>
     ```
@@ -122,42 +122,42 @@ Pay attention to the prompt, to know where execute the commands
 
     a. If not already connected, connect as administrative account
 
-    **!![green-dot](./images/green-square.jpg) shell>** 
+    **![green-dot](./images/green-square.jpg) shell>** 
     ```
     <span style="color:green">shell-mysql></span><copy>mysql admin@127.0.0.1</copy>
     ```
 
     b. Check firewall mode for the group 'fwgrp'
 
-    **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>** 
+    **![yellow-dot](./images/yellow-square.jpg) mysqlsh>** 
     ```
     <span style="color:blue">mysql></span><copy>SELECT MODE FROM performance_schema.firewall_groups WHERE NAME = 'fwgrp';</copy>
     ```
 
     c. Check users that are memebrs of 'fwgrp' group
 
-    **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>** 
+    **![yellow-dot](./images/yellow-square.jpg) mysqlsh>** 
     ```
     <span style="color:blue">mysql></span><copy>SELECT * FROM performance_schema.firewall_membership WHERE GROUP_ID = 'fwgrp' ORDER BY MEMBER_ID;</copy>
     ```
 
     d. Check rules for 'fwgrp' group
 
-    **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>** 
+    **![yellow-dot](./images/yellow-square.jpg) mysqlsh>** 
     ```
     <span style="color:blue">mysql></span><copy>SELECT RULE FROM performance_schema.firewall_group_allowlist WHERE NAME = 'fwgrp'\G</copy>
     ```
 
     e. Check rules counters
 
-    **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>** 
+    **![yellow-dot](./images/yellow-square.jpg) mysqlsh>** 
     ```
     <span style="color:blue">mysql></span><copy>SHOW GLOBAL STATUS LIKE '%firewall%';</copy>
     ```
 
     f. Switch to protecting mode
 
-    **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>** 
+    **![yellow-dot](./images/yellow-square.jpg) mysqlsh>** 
     ```
     <span style="color:blue">mysql></span><copy>CALL mysql.sp_set_firewall_group_mode('fwgrp', 'PROTECTING');</copy>
     ```
@@ -166,24 +166,24 @@ Pay attention to the prompt, to know where execute the commands
 
 1. <span style="color:red">Member1 Connection</span> Login on a separate terminal as member1.
 
-    **!![green-dot](./images/green-square.jpg) shell>** 
+    **![green-dot](./images/green-square.jpg) shell>** 
     ```
     <span style="color:green">shell-mysql></span><copy>mysqlsh member1@127.0.0.1</copy>
     ```
 
 2. Run some sample queries to test firewall
 
-    a. **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>**  
+    a. **![yellow-dot](./images/yellow-square.jpg) mysqlsh>**  
     ```
     <span style="color:blue">mysql></span><copy>USE employees;SELECT emp_no, title, from_date, to_date FROM titles WHERE emp_no = 10011; </copy>
     ```
 
-    b. **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>** 
+    b. **![yellow-dot](./images/yellow-square.jpg) mysqlsh>** 
     ```
     <span style="color:blue">mysql></span><copy>SELECT emp_no, title, from_date, to_date FROM titles WHERE emp_no = 10011 OR TRUE; </copy>
     ```
 
-    c. **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>** 
+    c. **![yellow-dot](./images/yellow-square.jpg) mysqlsh>** 
     ```
     <span style="color:blue">mysql></span><copy>SHOW TABLES LIKE '%salaries%';</copy>
     ```
@@ -194,40 +194,40 @@ Pay attention to the prompt, to know where execute the commands
 
     a. If not already connected login as administrative account
 
-    **!![green-dot](./images/green-square.jpg) shell>** 
+    **![green-dot](./images/green-square.jpg) shell>** 
     ```
     <span style="color:green">shell-mysql></span><copy>mysqlsh admin@127.0.0.1</copy>
     ```
 
     b. Increase error log verbosity
 
-    **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>**  
+    **![yellow-dot](./images/yellow-square.jpg) mysqlsh>**  
     ```
     <span style="color:blue">mysql></span><copy>SET PERSIST log_error_verbosity=3;</copy>
     ```
 
     b. Set firewall in detecting mode
 
-    **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>**  
+    **![yellow-dot](./images/yellow-square.jpg) mysqlsh>**  
     ```
     <span style="color:blue">mysql></span><copy>CALL mysql.sp_set_firewall_group_mode('fwgrp', 'DETECTING');</copy>
     ```
 
     c. Check firewall status
 
-    **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>**  
+    **![yellow-dot](./images/yellow-square.jpg) mysqlsh>**  
     ```
     <span style="color:blue">mysql></span><copy>SHOW GLOBAL STATUS LIKE '%firewall%';</copy>
     ```
 
 2. <span style="color:red">Member1 Connection</span> Login on a separate terminal as member1 and execute a query that violates firewall rules
 
-    a. **!![green-dot](./images/green-square.jpg) shell>** 
+    a. **![green-dot](./images/green-square.jpg) shell>** 
     ```
     <span style="color:green">shell-mysql></span><copy>mysql member1@127.0.0.1</copy>
     ```
 
-    b. **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>** 
+    b. **![yellow-dot](./images/yellow-square.jpg) mysqlsh>** 
     ```
     <span style="color:blue">mysql></span><copy>USE employees; SELECT emp_no, title, from_date, to_date FROM titles WHERE emp_no = 10011 OR TRUE LIMIT 10; </copy>
     ```
@@ -236,19 +236,19 @@ Pay attention to the prompt, to know where execute the commands
 
     a. Login as admin
 
-    **!![green-dot](./images/green-square.jpg) shell>** 
+    **![green-dot](./images/green-square.jpg) shell>** 
     ```
     <span style="color:green">shell-mysql></span><copy>mysqlsh admin@127.0.0.1</copy>
     ```
     b. Chekc firewall status
 
-    **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>**  
+    **![yellow-dot](./images/yellow-square.jpg) mysqlsh>**  
     ```
     <span style="color:blue">mysql></span><copy>SHOW GLOBAL STATUS LIKE '%firewall%';</copy>
     ```
     c. Check error log content
 
-    **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>**  
+    **![yellow-dot](./images/yellow-square.jpg) mysqlsh>**  
     ```
     <span style="color:blue">mysql></span><copy>SELECT * FROM performance_schema.error_log WHERE ERROR_CODE='MY-011191'\G</copy>
     ```
