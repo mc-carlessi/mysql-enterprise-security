@@ -28,11 +28,11 @@ This lab assumes you have:
 ### Lab standard
 
 Pay attention to the prompt, to know where execute the commands 
-* ![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>  
+* ![green-dot](./images/green-square.jpg) shell>  
   The command must be executed in the Operating System shell
-* ![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>  
+* ![blue-dot](./images/blue-square.jpg) mysql>  
   The command must be executed in a client like MySQL, MySQL Shell or similar tool
-* ![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>  
+* !![yellow-dot](./images/yellow-square.jpg) mysqlsh>  
   The command must be executed in MySQL shell
 
 ## Task 1: MySQL Connection
@@ -42,34 +42,34 @@ This approach let you configure more secure and flexible scripts.
 
 1. Set the login path **local_admin** to be used for easier connections 
 
- **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
+ **![green-dot](./images/green-square.jpg) shell>**
     ```
     <copy>mysql_config_editor set --login-path=local_admin --user=admin --host=127.0.0.1 -p</copy>
     ```
 
 2. Test the connection with mysql and mysqlsh clients
 
- **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
+ **![green-dot](./images/green-square.jpg) shell>**
     ```
     <copy>mysql --login-path=local_admin</copy>
     ```
- **![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>** 
+ **![blue-dot](./images/blue-square.jpg) mysql>** 
     ```
     <copy>exit</copy>
     ```
 
- **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
+ **![green-dot](./images/green-square.jpg) shell>**
     ```
     <copy>mysqlsh --login-path=local_admin</copy>
     ```
- **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>** 
+ **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>** 
     ```
     <copy>\quit</copy>
     ```
 
 2. List existing settings, please note that password are obfuscated
 
- **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
+ **![green-dot](./images/green-square.jpg) shell>**
     ```
     <copy>mysql_config_editor print --all</copy>
     ```
@@ -78,13 +78,13 @@ This approach let you configure more secure and flexible scripts.
 
 1. Connect to your instance
 
-    **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
+    **![green-dot](./images/green-square.jpg) shell>**
     ```
     <copy>mysqlsh admin@127.0.0.1</copy>
     ```
 
 2. You can check the values of a specific variable, like the version of your server to know if it's updated to last release or not  
-    **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>** 
+    **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>** 
     ```
     <copy>SHOW VARIABLES LIKE "%version%";</copy>
     ```
@@ -111,7 +111,7 @@ This approach let you configure more secure and flexible scripts.
 
 7. The “\G” is like “;” with a different way to show results
 
-  **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>** 
+  **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>** 
     ```
     <copy>SHOW GLOBAL VARIABLES LIKE 'version%';</copy>
     ```
@@ -121,7 +121,7 @@ This approach let you configure more secure and flexible scripts.
 
 8. Show connections
 
-  **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>**
+  **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
     ```
     <copy>SHOW FULL PROCESSLIST;</copy>
     ```

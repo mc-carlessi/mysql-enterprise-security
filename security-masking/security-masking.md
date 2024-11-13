@@ -23,11 +23,11 @@ This lab assumes you have:
 ### Lab standard
 
 Pay attention to the prompt, to know where execute the commands 
-* ![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>  
+* ![green-dot](./images/green-square.jpg) shell>  
   The command must be executed in the Operating System shell
-* ![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>  
+* ![blue-dot](./images/blue-square.jpg) mysql>  
   The command must be executed in a client like MySQL, MySQL Shell or similar tool
-* ![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>  
+* !![yellow-dot](./images/yellow-square.jpg) mysqlsh>  
   The command must be executed in MySQL shell
     
 
@@ -38,13 +38,13 @@ Pay attention to the prompt, to know where execute the commands
 ## Task 1: Install masking plugin
 
 1. To install the data masking plugin, log with administrative account and using mysql standard protocol  
-    **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>** 
+    **![green-dot](./images/green-square.jpg) shell>** 
     ```
     <copy>mysqlsh admin@127.0.0.1 --mysql</copy>
     ```
 
 2. Create the masking_dictionaries table  
-    **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>** 
+    **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>** 
     ```
     <copy>CREATE TABLE IF NOT EXISTS
             mysql.masking_dictionaries(
@@ -56,7 +56,7 @@ Pay attention to the prompt, to know where execute the commands
     ```
 
 3. Load and install the masking components  
-    **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>** 
+    **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>** 
     ```
     <copy>INSTALL COMPONENT 'file://component_masking';</copy>
     ```
@@ -66,7 +66,7 @@ Pay attention to the prompt, to know where execute the commands
     ```
 
 4. Check if the components are loaded  
-    **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>** 
+    **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>** 
     ```
     <copy>SELECT * FROM mysql.component;</copy>
     ```
@@ -75,24 +75,24 @@ Pay attention to the prompt, to know where execute the commands
 
 1. Use data masking functions
 
-    a. **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>** 
+    a. **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>** 
     ```
     <copy>SELECT mask_inner(last_name, 2,1) FROM employees.employees limit 10;</copy>
     ```
 
-    b. **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>** 
+    b. **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>** 
     ```
     <copy>SELECT mask_outer(last_name, 2,1) FROM employees.employees limit 10;</copy>
     ```
 
 2. Generate numbers between 1 and 200  
-    **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>**  
+    **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>**  
     ```
     <copy>SELECT gen_range(1, 200);</copy>
     ```
 
 3. Generate email where name has 4 characters, surname has 5 characters and domain is mynet.com  
-    **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>**  
+    **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>**  
     ```
     <copy>SELECT gen_rnd_email(4, 5, 'mynet.com');</copy>
     ```
@@ -102,70 +102,70 @@ Pay attention to the prompt, to know where execute the commands
 
 1. Create Table to generate and add masking data
 
-    **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>** 
+    **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>** 
     ```
     <copy>USE employees; CREATE TABLE employees_mask LIKE employees;</copy>
     ```
 
 2. Add data to newly created table
 
-    **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>**  
+    **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>**  
     ```
     <copy>INSERT INTO employees_mask SELECT * FROM employees;</copy>
     ```
 
 3. Create new column for SSN's
 
-    **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>**  
+    **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>**  
     ```
     <copy>ALTER TABLE employees_mask ADD COLUMN ssn varchar(11);</copy>
     ```
 
 4. Create new column for emails's
 
-    **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>**  
+    **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>**  
     ```
     <copy>ALTER TABLE employees_mask ADD COLUMN email varchar(40);</copy>
     ```
 
 5. Use Functions to generate sample SSN data
 
-    **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>**  
+    **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>**  
     ```
     <copy>UPDATE employees_mask SET ssn = gen_rnd_ssn() WHERE 1;</copy>
     ```
 
 6. Use Functions to generate sample Email data
 
-    **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>**  
+    **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>**  
     ```
     <copy>UPDATE employees_mask SET email = gen_rnd_email() WHERE 1;</copy>
     ```
 
 7. Let's look at the data that we just created
 
-    **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>**  
+    **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>**  
     ```
     <copy>SELECT * FROM employees_mask LIMIT 5;</copy>
     ```
 
 8. Let's mask the SSN
 
-    **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>**  
+    **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>**  
     ```
     <copy>SELECT emp_no,first_name,last_name,mask_ssn(CONVERT(ssn USING latin1)) AS ssn FROM employees_mask LIMIT 5;</copy>
     ```
 
 9. Let's create a view which only shows the masked data
 
-    **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>**  
+    **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>**  
     ```
     <copy>CREATE VIEW masked_customer AS SELECT emp_no,first_name,last_name,mask_ssn(CONVERT(ssn USING latin1)) AS ssn FROM employees_mask;</copy>
     ```
 
 10. Let's create a user who only has access to the view with the masked data
 
-    **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>**  
+    **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>**  
     ```
     <copy>CREATE USER 'accounting'@'%' IDENTIFIED BY 'Pa33word!';</copy>
     ```
@@ -181,19 +181,19 @@ Pay attention to the prompt, to know where execute the commands
 11. Log in with new user account and run queries
 
 
-    **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>** 
+    **![green-dot](./images/green-square.jpg) shell>** 
     ```
     <copy>mysql -uaccounting -pPa33word! -h 127.0.0.1</copy>
     ```
 
-    **![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>**  
+    **![blue-dot](./images/blue-square.jpg) mysql>**  
     ```
     <copy>SELECT * FROM employees.masked_customer LIMIT 5;</copy>
     ```
 
 12. Try accessing table that is not masked
 
-    **![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) mysql>**  
+    **![blue-dot](./images/blue-square.jpg) mysql>**  
     ```
     <copy>SELECT * FROM employees.employees_mask LIMIT 5;</copy>
     ```

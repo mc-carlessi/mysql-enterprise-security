@@ -29,7 +29,7 @@ Pay attention to the prompt, to know where execute the commands
   The command must be executed in the Operating System shell
 * ![blue-dot](./images/blue-square.jpg) mysql>  
   The command must be executed in a client like MySQL, MySQL Shell or similar tool
-* ![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>  
+* ![yellow-dot](./images/yellow-square.jpg) mysqlsh>  
   The command must be executed in MySQL shell
 
 **Notes:**
@@ -39,7 +39,7 @@ Pay attention to the prompt, to know where execute the commands
 
 1. SSH into server intance and Create the global manifest file
 
-    **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
+    **![green-dot](./images/green-square.jpg) shell>**
 
     ```
     <copy>cd /usr/sbin </copy>
@@ -61,7 +61,7 @@ Pay attention to the prompt, to know where execute the commands
 
 3. Create the global configuration file
 
-    **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
+    **![green-dot](./images/green-square.jpg) shell>**
 
     ```
     <copy>cd /usr/lib64/mysql/plugin/</copy>
@@ -84,7 +84,7 @@ Pay attention to the prompt, to know where execute the commands
 
 5. Restart MySQL
 
-    **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
+    **![green-dot](./images/green-square.jpg) shell>**
 
     ```
     <copy>sudo service mysqld restart</copy>
@@ -94,7 +94,7 @@ Pay attention to the prompt, to know where execute the commands
 
 1. "Spy" on employees.employees table
 
-    a. **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
+    a. **![green-dot](./images/green-square.jpg) shell>**
 
     ```
     <copy>sudo strings "/var/lib/mysql/employees/employees.ibd" | head -n50</copy>
@@ -104,13 +104,13 @@ Pay attention to the prompt, to know where execute the commands
 
     Now with <span style="color:red">Administrative Account</span> we enable Encryption on the employees.employees table:
 
-    a.  **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
+    a.  **![green-dot](./images/green-square.jpg) shell>**
 
     ```
     <copy>mysqlsh admin@127.0.0.1</copy>
     ```
 
-    b. Verify the component is loaded and active: **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>**
+    b. Verify the component is loaded and active: **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
 
     ```
     <copy>SELECT * FROM performance_schema.keyring_component_status;</copy>
@@ -118,7 +118,7 @@ Pay attention to the prompt, to know where execute the commands
 
     c. Let's now encrypt the employ
     ees table 
-    **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>**
+    **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
 
     ```
     <copy>USE employees;</copy>
@@ -130,7 +130,7 @@ Pay attention to the prompt, to know where execute the commands
 
 3. From a second session, "spy" on employees.employees table again:
 
-    **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
+    **![green-dot](./images/green-square.jpg) shell>**
 
     ```
     <copy>sudo strings "/var/lib/mysql/employees/employees.ibd" | head -n50</copy>
@@ -140,7 +140,7 @@ Pay attention to the prompt, to know where execute the commands
 
     a. Get details on encrypted key file:
 
-        **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>**
+        **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
 
         ```
         <copy>SHOW VARIABLES LIKE 'keyring_encrypted_file_data'\G</copy>
@@ -148,35 +148,35 @@ Pay attention to the prompt, to know where execute the commands
 
     b. Set default for all tables to be encrypted when creating them:
     
-    **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>**
+    **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
     ```
     <copy>SET GLOBAL default_table_encryption=ON;</copy>
     ```
 
     c. Peek on the mysql System Tables:
 
-    **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>**
+    **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
     ```
     <copy>sudo strings "/var/lib/mysql/mysql.ibd" | head -n70</copy>
     ```
 
     d. Encrypt the mysql System Tables:
 
-    **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>**
+    **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
     ```
     <copy>ALTER TABLESPACE mysql ENCRYPTION = 'Y';</copy>
     ```
 
     e. Show all the encrypted tables:
 
-    **![#ff9933](https://via.placeholder.com/15/ff9933/000000?text=+) mysqlsh>**
+    **!![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
     ```
     <copy>SELECT SPACE, NAME, SPACE_TYPE, ENCRYPTION FROM INFORMATION_SCHEMA.INNODB_TABLESPACES WHERE ENCRYPTION='Y'\G</copy>
     ```
 
 5. Validate encryption of the mysql System Tables:
 
-    **![#00cc00](https://via.placeholder.com/15/00cc00/000000?text=+) shell>**
+    **![green-dot](./images/green-square.jpg) shell>**
 
     ```
     <copy>sudo strings "/var/lib/mysql/mysql.ibd" | head -n70</copy>
