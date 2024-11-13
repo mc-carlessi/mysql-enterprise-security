@@ -20,6 +20,17 @@ In this lab, you will be guided through the following tasks:
 
 - All previous labs successfully completed
 
+### Lab standard
+
+Pay attention to the prompt, to know where execute the commands 
+* ![green-dot](./images/green-square.jpg) shell>  
+  The command must be executed in the Operating System shell
+* ![blue-dot](./images/blue-square.jpg) mysql>  
+  The command must be executed in a client like MySQL, MySQL Shell or similar tool
+* ![yellow-dot](./images/yellow-square.jpg) mysqlsh>  
+  The command must be executed in MySQL shell
+
+
 ## Task 1: Install App Server (APACHE)
 
 1. Open OCI Cloud Console. If not already connected with SSH, on Command Line, connect to the Compute instance using SSH ... be sure replace the  "private key file"  and the "new compute instance ip"

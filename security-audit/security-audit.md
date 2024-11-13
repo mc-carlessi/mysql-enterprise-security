@@ -16,7 +16,7 @@ In this lab, you will:
 
 ### Prerequisites
 
-This lab assumes you have:
+- All previous labs successfully completed
 
 ### Lab standard
 
