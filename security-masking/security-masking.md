@@ -37,7 +37,8 @@ Pay attention to the prompt, to know where execute the commands
 
 ## Task 1: Install masking plugin
 
-1. To install the data masking plugin, log with administrative account and using mysql standard protocol  
+1. To install the data masking plugin, log with administrative account and ***using mysql standard protocol*** (please note the option **--mysql**)
+
     **![green-dot](./images/green-square.jpg) shell>** 
     ```
     <copy>mysqlsh admin@127.0.0.1 --mysql</copy>
@@ -65,7 +66,8 @@ Pay attention to the prompt, to know where execute the commands
     <copy>INSTALL COMPONENT 'file://component_masking_functions';</copy>
     ```
 
-4. Check if the components are loaded  
+4. Check if the components are loaded
+
     **![yellow-dot](./images/yellow-square.jpg) mysqlsh>** 
     ```
     <copy>SELECT * FROM mysql.component;</copy>
@@ -91,7 +93,8 @@ Pay attention to the prompt, to know where execute the commands
     <copy>SELECT gen_range(1, 200);</copy>
     ```
 
-3. Generate email where name has 4 characters, surname has 5 characters and domain is mynet.com  
+3. Generate email where name has 4 characters, surname has 5 characters and domain is mynet.com
+
     **![yellow-dot](./images/yellow-square.jpg) mysqlsh>**  
     ```
     <copy>SELECT gen_rnd_email(4, 5, 'mynet.com');</copy>
@@ -198,11 +201,18 @@ Pay attention to the prompt, to know where execute the commands
     <copy>SELECT * FROM employees.employees_mask LIMIT 5;</copy>
     ```
 
-13. Run the application to see the SSN and Email data:
+13. Exit from mysql client
+
+    **![blue-dot](./images/blue-square.jpg) mysql>**  
+    ```
+    <copy>exit</copy>
+    ```
+
+14. Run the application to see the SSN and Email data:
 
     http://computeIP/emp_apps/employees_mask.php
 
-14. Run the application to see the masked SSN data:
+15. Run the application to see the masked SSN data:
 
     http://computeIP/emp_apps/employees_mask_after.php
 

@@ -186,6 +186,13 @@ Pay attention to the prompt, to know where execute the commands
     <copy>SELECT SPACE, NAME, SPACE_TYPE, ENCRYPTION FROM INFORMATION_SCHEMA.INNODB_TABLESPACES WHERE ENCRYPTION='Y'\G</copy>
     ```
 
+5. Exit from MySQL Shell
+
+    **![yellow-dot](./images/yellow-square.jpg) mysqlsh>**
+    ```
+    <copy>\quit</copy>
+    ```
+
 5. Validate encryption of the mysql System Tables:
 
     **![green-dot](./images/green-square.jpg) shell>**

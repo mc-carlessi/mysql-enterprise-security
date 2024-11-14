@@ -62,15 +62,15 @@ Pay attention to the prompt, to know where execute the commands
 
 ## Task 2: Setup Firewall User and Rules
 
-1. Create user (member1) to run Firewall rules and inspect Information Schema tables: 
+1. Create user (appuser2) to run Firewall rules and inspect Information Schema tables: 
 
     ```
-    <span style="color:blue">mysql></span><copy>CREATE USER 'member1'@'localhost' IDENTIFIED BY 'Welcome1!';</copy>
+    <span style="color:blue">mysql></span><copy>CREATE USER 'appuser2'@'localhost' IDENTIFIED BY 'Welcome1!';</copy>
     ```
 
-2. Grant proper permissions to sample database for member1
+2. Grant proper permissions to sample database for appuser2
     ```
-    <span style="color:blue">mysql></span><copy>GRANT ALL ON employees.* TO 'member1'@'localhost';</copy>
+    <span style="color:blue">mysql></span><copy>GRANT ALL ON employees.* TO 'appuser2'@'localhost';</copy>
     ```
 
 3. Create Group Profile name 'fwgrp' and turn on Recording of SQL commands
@@ -78,9 +78,9 @@ Pay attention to the prompt, to know where execute the commands
     <span style="color:blue">mysql></span><copy>CALL mysql.sp_set_firewall_group_mode('fwgrp', 'RECORDING');</copy>
     ```
 
-4. Add member1 to Firewall Group just created
+4. Add appuser2 to Firewall Group just created
     ```
-    <span style="color:blue">mysql></span><copy>CALL mysql.sp_firewall_group_enlist('fwgrp', 'member1@localhost');</copy>
+    <span style="color:blue">mysql></span><copy>CALL mysql.sp_firewall_group_enlist('fwgrp', 'appuser2@localhost');</copy>
     ```
 
 5. Check environment
@@ -94,11 +94,11 @@ Pay attention to the prompt, to know where execute the commands
 
 ## Task 3: Run queries to test Firewall characteristics.
 
-1. Open a connection with <span style="color:red">member1</span> account in a separate terminal.
+1. Open a connection with <span style="color:red">appuser2</span> account in a separate terminal.
 
     **![green-dot](./images/green-square.jpg) shell>** 
     ```
-    <span style="color:green">shell-mysql></span><copy>mysqlsh member1@127.0.0.1</copy>
+    <span style="color:green">shell-mysql></span><copy>mysqlsh appuser2@127.0.0.1</copy>
     ```
 
 2. Run some sample queries that are acceptable
@@ -164,11 +164,11 @@ Pay attention to the prompt, to know where execute the commands
 
 ## Task 5: ReRun queries to test Firewall characteristics.
 
-1. <span style="color:red">Member1 Connection</span> Login on a separate terminal as member1.
+1. <span style="color:red">appuser2 Connection</span> Login on a separate terminal as appuser2.
 
     **![green-dot](./images/green-square.jpg) shell>** 
     ```
-    <span style="color:green">shell-mysql></span><copy>mysqlsh member1@127.0.0.1</copy>
+    <span style="color:green">shell-mysql></span><copy>mysqlsh appuser2@127.0.0.1</copy>
     ```
 
 2. Run some sample queries to test firewall
@@ -220,11 +220,11 @@ Pay attention to the prompt, to know where execute the commands
     <span style="color:blue">mysql></span><copy>SHOW GLOBAL STATUS LIKE '%firewall%';</copy>
     ```
 
-2. <span style="color:red">Member1 Connection</span> Login on a separate terminal as member1 and execute a query that violates firewall rules
+2. <span style="color:red">appuser2 Connection</span> Login on a separate terminal as appuser2 and execute a query that violates firewall rules
 
     a. **![green-dot](./images/green-square.jpg) shell>** 
     ```
-    <span style="color:green">shell-mysql></span><copy>mysql member1@127.0.0.1</copy>
+    <span style="color:green">shell-mysql></span><copy>mysql appuser2@127.0.0.1</copy>
     ```
 
     b. **![yellow-dot](./images/yellow-square.jpg) mysqlsh>** 
