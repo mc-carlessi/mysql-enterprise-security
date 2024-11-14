@@ -85,12 +85,17 @@ Pay attention to the prompt, to know where execute the commands
 
 5. Check environment
 
+    **![yellow-dot](./images/yellow-square.jpg) mysqlsh>** 
     ```
     <span style="color:blue">mysql></span><copy>SELECT MODE FROM performance_schema.firewall_groups WHERE NAME = 'fwgrp';</copy>
     ```
     ```
+    <span style="color:blue">mysql></span><copy>SELECT * FROM performance_schema.firewall_membership WHERE GROUP_ID = 'fwgrp' ORDER BY MEMBER_ID;</copy>
+    ```
+    ```
     <span style="color:blue">mysql></span><copy>SELECT RULE FROM performance_schema.firewall_group_allowlist WHERE NAME = 'fwgrp';</copy>
     ```
+
 
 ## Task 3: Run queries to test Firewall characteristics.
 
@@ -118,44 +123,30 @@ Pay attention to the prompt, to know where execute the commands
 
 ## Task 4: Inspect MySQL Firewall 
 
-1. <span style="color:red">Administrative account</span> Login on a separate terminal as admin.
+1. <span style="color:red">Administrative account</span> Return to admin connection and check firewall status
 
-    a. If not already connected, connect as administrative account
-
-    **![green-dot](./images/green-square.jpg) shell>** 
-    ```
-    <span style="color:green">shell-mysql></span><copy>mysql admin@127.0.0.1</copy>
-    ```
-
-    b. Check firewall mode for the group 'fwgrp'
+    a. Check firewall mode for the group 'fwgrp'
 
     **![yellow-dot](./images/yellow-square.jpg) mysqlsh>** 
     ```
     <span style="color:blue">mysql></span><copy>SELECT MODE FROM performance_schema.firewall_groups WHERE NAME = 'fwgrp';</copy>
     ```
 
-    c. Check users that are memebrs of 'fwgrp' group
-
-    **![yellow-dot](./images/yellow-square.jpg) mysqlsh>** 
-    ```
-    <span style="color:blue">mysql></span><copy>SELECT * FROM performance_schema.firewall_membership WHERE GROUP_ID = 'fwgrp' ORDER BY MEMBER_ID;</copy>
-    ```
-
-    d. Check rules for 'fwgrp' group
+    b. Check rules for 'fwgrp' group
 
     **![yellow-dot](./images/yellow-square.jpg) mysqlsh>** 
     ```
     <span style="color:blue">mysql></span><copy>SELECT RULE FROM performance_schema.firewall_group_allowlist WHERE NAME = 'fwgrp'\G</copy>
     ```
 
-    e. Check rules counters
+    c. Check rules counters
 
     **![yellow-dot](./images/yellow-square.jpg) mysqlsh>** 
     ```
     <span style="color:blue">mysql></span><copy>SHOW GLOBAL STATUS LIKE '%firewall%';</copy>
     ```
 
-    f. Switch to protecting mode
+    d. Switch to protecting mode
 
     **![yellow-dot](./images/yellow-square.jpg) mysqlsh>** 
     ```
@@ -164,12 +155,7 @@ Pay attention to the prompt, to know where execute the commands
 
 ## Task 5: ReRun queries to test Firewall characteristics.
 
-1. <span style="color:red">appuser2 Connection</span> Login on a separate terminal as appuser2.
-
-    **![green-dot](./images/green-square.jpg) shell>** 
-    ```
-    <span style="color:green">shell-mysql></span><copy>mysqlsh appuser2@127.0.0.1</copy>
-    ```
+1. <span style="color:red">appuser2 Connection</span> Return to appuser2 conection
 
 2. Run some sample queries to test firewall
 
@@ -190,16 +176,9 @@ Pay attention to the prompt, to know where execute the commands
 
 ## Task 6: test Firewall in detecting mode
 
-1. <span style="color:red">Administrative Account</span> Login on a separate terminal as admin.
+1. <span style="color:red">Administrative Account</span> Return to admin connection
 
-    a. If not already connected login as administrative account
-
-    **![green-dot](./images/green-square.jpg) shell>** 
-    ```
-    <span style="color:green">shell-mysql></span><copy>mysqlsh admin@127.0.0.1</copy>
-    ```
-
-    b. Increase error log verbosity
+    a. Increase error log verbosity
 
     **![yellow-dot](./images/yellow-square.jpg) mysqlsh>**  
     ```
@@ -220,33 +199,23 @@ Pay attention to the prompt, to know where execute the commands
     <span style="color:blue">mysql></span><copy>SHOW GLOBAL STATUS LIKE '%firewall%';</copy>
     ```
 
-2. <span style="color:red">appuser2 Connection</span> Login on a separate terminal as appuser2 and execute a query that violates firewall rules
-
-    a. **![green-dot](./images/green-square.jpg) shell>** 
-    ```
-    <span style="color:green">shell-mysql></span><copy>mysql appuser2@127.0.0.1</copy>
-    ```
+2. <span style="color:red">appuser2 Connection</span> Return to appuser2 connection and execute the last query that violates firewall rules
 
     b. **![yellow-dot](./images/yellow-square.jpg) mysqlsh>** 
     ```
     <span style="color:blue">mysql></span><copy>USE employees; SELECT emp_no, title, from_date, to_date FROM titles WHERE emp_no = 10011 OR TRUE LIMIT 10; </copy>
     ```
 
-3. <span style="color:red">Administration Connection</span> Login on a separate terminal as Adminstrator.
+3. <span style="color:red">Administration Connection</span> Return to admin connection and see how the status changed
 
-    a. Login as admin
-
-    **![green-dot](./images/green-square.jpg) shell>** 
-    ```
-    <span style="color:green">shell-mysql></span><copy>mysqlsh admin@127.0.0.1</copy>
-    ```
-    b. Chekc firewall status
+    a. Check firewall status
 
     **![yellow-dot](./images/yellow-square.jpg) mysqlsh>**  
     ```
     <span style="color:blue">mysql></span><copy>SHOW GLOBAL STATUS LIKE '%firewall%';</copy>
     ```
-    c. Check error log content
+
+    b. Check error log content
 
     **![yellow-dot](./images/yellow-square.jpg) mysqlsh>**  
     ```
@@ -254,14 +223,14 @@ Pay attention to the prompt, to know where execute the commands
     ```
 
 
-You may now **proceed to the next lab**
+This **end our workshop**
 
 
 ## Learn More
 
 *(optional - include links to docs, white papers, blogs, etc)*
 
-* [Firewall Docs](https://dev.mysql.com/doc/refman/8.3/en/firewall.html)
+* [Firewall Docs](https://dev.mysql.com/doc/refman/8.4/en/firewall.html)
 * [Enterprise Firewall with Drupal](https://dev.mysql.com/blog-archive/group-profiles-in-mysql-enterprise-firewall/)
 
 ## Acknowledgements
